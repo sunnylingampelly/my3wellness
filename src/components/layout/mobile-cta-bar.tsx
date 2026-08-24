@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Phone } from "lucide-react";
+import { Navigation, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CallLink } from "@/components/ui-custom/call-link";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
+import { directionsLink } from "@/lib/links";
+import { trackEvent } from "@/lib/analytics";
 
 export function MobileCtaBar() {
   const [visible, setVisible] = useState(false);
@@ -41,15 +43,27 @@ export function MobileCtaBar() {
           style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
         >
           <div className="glass mx-3 mb-3 flex items-center gap-2 rounded-full p-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+            <a
+              href={directionsLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Get directions to Anantara Spa"
+              onClick={() => trackEvent("directions_click")}
+              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary transition-transform active:scale-90"
+            >
+              <Navigation className="size-5" strokeWidth={1.5} />
+            </a>
             <CallLink
               aria-label="Call Anantara Spa"
               className="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary transition-transform active:scale-90"
             >
               <Phone className="size-5" strokeWidth={1.5} />
             </CallLink>
-            <WhatsAppLink className="flex flex-1 items-center justify-center gap-2 rounded-full bg-primary py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-transform active:scale-95">
+            {/* True WhatsApp brand green — this is the "WhatsApp button" people
+                recognize at a glance, kept distinct from the site's teal/gold theme. */}
+            <WhatsAppLink className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 font-accent text-xs uppercase tracking-[0.14em] text-white shadow-[0_4px_14px_rgba(37,211,102,0.35)] transition-transform active:scale-95">
               <WhatsAppIcon className="size-4" />
-              Book on WhatsApp
+              WhatsApp
             </WhatsAppLink>
           </div>
         </motion.div>

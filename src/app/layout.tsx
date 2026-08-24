@@ -11,6 +11,7 @@ import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provi
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CommandMenuProvider } from "@/components/layout/command-menu";
 import { Header } from "@/components/layout/header";
+import { OfferBar } from "@/components/layout/offer-bar";
 import { Footer } from "@/components/layout/footer";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
@@ -164,6 +165,14 @@ export default function RootLayout({
                 </a>
                 <ScrollProgress />
                 <CursorGlow />
+                <OfferBar />
+                {/* Reserves the same space OfferBar occupies (and collapses with it
+                    on dismiss via the shared --offer-bar-h var) so the fixed Header
+                    and page content below don't need their own clearance changed. */}
+                <div
+                  aria-hidden="true"
+                  className="h-[var(--offer-bar-h)] transition-[height] duration-300"
+                />
                 <Header />
                 <main id="main-content" className="flex-1">
                   {children}

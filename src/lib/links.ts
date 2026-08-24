@@ -15,3 +15,7 @@ export function mailtoLink(subject?: string) {
   const s = subject ? `?subject=${encodeURIComponent(subject)}` : "";
   return `mailto:${siteConfig.contact.email}${s}`;
 }
+
+export function directionsLink() {
+  return siteConfig.address.mapsDirectionsUrl;
+}

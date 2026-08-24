@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ChevronDown, Phone } from "lucide-react";
+import { ChevronDown, Phone, PartyPopper } from "lucide-react";
 
 import { CallLink } from "@/components/ui-custom/call-link";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
@@ -75,11 +75,25 @@ export function Hero() {
       </div>
 
       <div className="container-luxe relative z-10 flex flex-col items-center pt-24 pb-14 text-center sm:items-start sm:pb-0 sm:text-left">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: -10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <WhatsAppLink
+            message="Hi Anantara Spa, I'd like to book a treatment with the 30% off offer."
+            className="animate-offer-pulse inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-1.5 font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-ink transition-transform hover:scale-[1.04] active:scale-95 sm:text-xs"
+          >
+            <PartyPopper className="size-3.5" strokeWidth={2} />
+            Flat 30% Off All Therapies
+          </WhatsAppLink>
+        </motion.div>
+
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-accent text-xs sm:text-sm uppercase tracking-[0.32em] text-gold"
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="mt-4 font-accent text-xs sm:text-sm uppercase tracking-[0.32em] text-gold"
         >
           Anantara Spa &middot; Gachibowli, Hyderabad
         </motion.span>

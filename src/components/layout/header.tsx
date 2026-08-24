@@ -41,7 +41,7 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-colors duration-500",
+        "fixed inset-x-0 top-[var(--offer-bar-h)] z-50 transition-[top,background-color,border-color] duration-300",
         scrolled ? "glass shadow-[0_1px_0_0_rgba(0,0,0,0.04)]" : "bg-transparent"
       )}
     >
