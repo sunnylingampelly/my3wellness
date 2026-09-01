@@ -1,6 +1,7 @@
 import { SectionHeading } from "@/components/ui-custom/section-heading";
 import { TestimonialCard } from "@/components/ui-custom/testimonial-card";
-import { RevealGroup, RevealItem } from "@/components/ui-custom/reveal";
+import { RevealGroup, RevealItem, Reveal } from "@/components/ui-custom/reveal";
+import { GoogleIcon } from "@/components/ui-custom/brand-icons";
 import { testimonials } from "@/content/testimonials";
 
 export function TestimonialsSection() {
@@ -12,8 +13,17 @@ export function TestimonialsSection() {
           title="Trusted by Hyderabad's Busiest Professionals"
         />
 
+        <Reveal delay={0.1}>
+          <div className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 shadow-sm">
+            <GoogleIcon className="size-4" />
+            <span className="font-accent text-xs uppercase tracking-[0.1em] text-muted-foreground">
+              Reviews from Google
+            </span>
+          </div>
+        </Reveal>
+
         <RevealGroup
-          className="mt-16 flex gap-5 overflow-x-auto pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible [&::-webkit-scrollbar]:hidden"
+          className="mt-10 flex gap-5 overflow-x-auto pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-3 sm:overflow-visible [&::-webkit-scrollbar]:hidden"
           stagger={0.1}
         >
           {testimonials.slice(0, 3).map((t) => (
