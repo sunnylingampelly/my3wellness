@@ -13,18 +13,49 @@ export function MobileCtaBar() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let lastY = window.scrollY;
+    // Idle timer: bring the bar back a moment after the user stops scrolling,
+    // even mid-page — otherwise it can sit hidden (having last moved down)
+    // right as someone pauses to tap a card's own CTA underneath it.
+    let idleTimer: number | undefined;
+
     const onScroll = () => {
       const scrollY = window.scrollY;
-      const pastHero = scrollY > 480;
+      // "Past hero" means the hero section has fully scrolled out of view —
+      // measured against its real height (the homepage hero is ~100svh, page
+      // heroes are ~52vh) rather than a guessed pixel offset, so the bar
+      // never appears while any part of the hero is still on screen.
+      const heroEl = document.getElementById("hero");
+      const pastHero = heroEl ? heroEl.getBoundingClientRect().bottom <= 0 : scrollY > 480;
       const distanceFromBottom =
         document.documentElement.scrollHeight - scrollY - window.innerHeight;
       const nearFooter = distanceFromBottom < 480;
-      setVisible(pastHero && !nearFooter);
+      const inRange = pastHero && !nearFooter;
+
+      const delta = scrollY - lastY;
+      const scrollingDown = delta > 4;
+      const scrollingUp = delta < -4;
+      lastY = scrollY;
+
+      window.clearTimeout(idleTimer);
+      if (!inRange) {
+        setVisible(false);
+      } else if (scrollingDown) {
+        // Out of the way while actively scrolling down, so it never sits on
+        // top of a card's own "Check Availability on WhatsApp" button.
+        setVisible(false);
+      } else if (scrollingUp) {
+        setVisible(true);
+      }
+      if (inRange) {
+        idleTimer = window.setTimeout(() => setVisible(true), 500);
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      window.clearTimeout(idleTimer);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };

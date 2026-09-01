@@ -18,7 +18,7 @@ export function PageHero({
   breadcrumb: { name: string; href?: string }[];
 }) {
   return (
-    <section className="relative flex min-h-[52vh] items-end overflow-hidden pt-28">
+    <section id="hero" className="relative flex min-h-[52vh] items-end overflow-hidden pt-28">
       <Image
         src={image}
         alt=""

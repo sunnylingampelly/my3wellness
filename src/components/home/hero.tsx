@@ -86,6 +86,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
+      id="hero"
       className="relative flex min-h-[calc(100svh-var(--offer-bar-h))] flex-col overflow-hidden bg-ink sm:h-[calc(100svh-var(--topbar-h)-var(--offer-bar-h))]"
     >
       {/* Desktop/tablet: rotating slideshow */}
@@ -106,7 +107,6 @@ export function Hero() {
               alt={s.alt}
               fill
               sizes="100vw"
-              priority={i === 0}
               className="object-cover"
             />
           </motion.div>
@@ -123,7 +123,7 @@ export function Hero() {
           loop
           playsInline
           disablePictureInPicture
-          preload="auto"
+          preload="metadata"
           poster="/images/gallery/mobile-hero.webp"
           aria-hidden="true"
           className="size-full object-cover"

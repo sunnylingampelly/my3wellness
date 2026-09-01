@@ -93,10 +93,11 @@ export function ServiceCard({
 
         <WhatsAppLink
           message={`Hi MY3 Wellness Spa, I'd like to check availability for ${service.name}.`}
+          aria-label={`Check availability for ${service.name} on WhatsApp`}
           className="mt-1 inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
           <WhatsAppIcon className="size-4" />
-          Check Availability on WhatsApp
+          Check Availability
         </WhatsAppLink>
       </div>
     </div>
