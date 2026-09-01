@@ -5,7 +5,7 @@ export type FAQ = {
 
 export const generalFaqs: FAQ[] = [
   {
-    question: "Where exactly is Anantara Spa located in Gachibowli?",
+    question: "Where exactly is MY3 Wellness Spa located in Gachibowli?",
     answer:
       "We're on the 1st Floor of the G Square Building, Madhura Nagar Colony, Gachibowli, Raidurg, Hyderabad — a short drive from HITEC City, the Financial District, Wipro Circle, Mindspace, and DLF Cyber City. Ample parking and easy access from Raidurg Metro Station.",
   },
@@ -47,15 +47,15 @@ export const generalFaqs: FAQ[] = [
   {
     question: "Do you have offers for weekday or weekend bookings?",
     answer:
-      "We periodically run weekday and weekend offers, and Anantara members receive ongoing preferential pricing. Message us on WhatsApp or check our Membership page for current benefits.",
+      "We periodically run weekday and weekend offers, and MY3 members receive ongoing preferential pricing. Message us on WhatsApp or check our Membership page for current benefits.",
   },
   {
-    question: "Is Anantara Spa suitable for first-time spa visitors?",
+    question: "Is MY3 Wellness Spa suitable for first-time spa visitors?",
     answer:
       "Absolutely — our Swedish Massage is a gentle, welcoming introduction to spa therapy, and every session begins with a consultation so your therapist can adjust pressure and pacing to your comfort level.",
   },
   {
-    question: "How do I get to Anantara Spa from HITEC City or the Financial District?",
+    question: "How do I get to MY3 Wellness Spa from HITEC City or the Financial District?",
     answer:
       "We're a short drive from both business districts — most guests from HITEC City, Financial District, or Wipro Circle reach us in under 15–20 minutes depending on traffic. Use the map on our Contact page for live directions.",
   },
@@ -68,7 +68,7 @@ export const generalFaqs: FAQ[] = [
 
 export const membershipFaqs: FAQ[] = [
   {
-    question: "How does Anantara membership work?",
+    question: "How does MY3 membership work?",
     answer:
       "Membership is a prepaid annual plan that unlocks discounted rates on every treatment, priority booking access, and a complimentary birthday treatment. Choose from Silver, Gold, or Platinum depending on how often you plan to visit.",
   },

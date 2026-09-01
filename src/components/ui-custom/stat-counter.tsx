@@ -14,7 +14,7 @@ export function StatCounter({
   value: number;
   suffix?: string;
   label: string;
-  /** "light" = for use on light backgrounds (dark forest number). "dark" = for use on dark/forest backgrounds (cream number). */
+  /** "light" = for use on light backgrounds (dark olive number). "dark" = for use on dark/olive backgrounds (cream number). */
   tone?: "light" | "dark";
 }) {
   const ref = useRef<HTMLSpanElement>(null);

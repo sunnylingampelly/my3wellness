@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Anantara Spa collects, uses, and protects your information.",
+  description: "How MY3 Wellness Spa collects, uses, and protects your information.",
   alternates: { canonical: "/privacy-policy" },
   robots: { index: true, follow: true },
 };

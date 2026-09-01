@@ -1,4 +1,4 @@
-const CACHE_NAME = "anantara-spa-v1";
+const CACHE_NAME = "my3-wellness-spa-v1";
 const OFFLINE_URL = "/offline";
 const PRECACHE_URLS = ["/", OFFLINE_URL, "/icons/icon-192.png", "/icons/icon-512.png"];
 

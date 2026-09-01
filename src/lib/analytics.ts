@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 declare global {
   interface Window {
     // dataLayer holds both named custom events (trackEvent) and raw
@@ -14,7 +16,10 @@ export function trackEvent(event: string, params?: Record<string, unknown>) {
   window.dataLayer.push({ event, ...params });
 }
 
-const CALL_CONVERSION_LABEL = "AW-18366122950/g3JnCL2h7NscEMaX07VE";
+// PLACEHOLDER — replace with MY3's own Google Ads "Click to call" conversion
+// label before launch (Ads → Conversions → your action → Tag setup). Leaving
+// a previous owner's real label here would report conversions into their account.
+const CALL_CONVERSION_LABEL = "AW-XXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXX";
 
 /**
  * Google Ads "Click to call" conversion snippet, adapted to navigate the
@@ -54,7 +59,9 @@ export function reportCallConversion(url: string) {
   window.setTimeout(navigate, 400);
 }
 
-const WHATSAPP_CONVERSION_LABEL = "AW-18366122950/g0YZCIfU0OEcEMaX07VE";
+// PLACEHOLDER — same as CALL_CONVERSION_LABEL above, for the "WhatsApp booking"
+// conversion action. Replace before launch.
+const WHATSAPP_CONVERSION_LABEL = "AW-XXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXX";
 
 /**
  * Google Ads "WhatsApp booking" conversion snippet. No navigation
@@ -73,4 +80,27 @@ export function reportWhatsAppConversion() {
       currency: "INR",
     },
   ]);
+}
+
+/**
+ * Attaches a click handler to an anchor/button via a native DOM listener
+ * instead of React's onClick prop. React's synthetic click delegation was
+ * found to silently fail to invoke onClick on our conversion links in
+ * production (clicks recorded zero conversions despite correct wiring) — a
+ * listener attached directly to the node bypasses whatever breaks that
+ * delegation. Use this for any click that reports a conversion/analytics
+ * event; plain navigational links don't need it.
+ */
+export function useNativeClick<T extends HTMLElement>(
+  handler: (e: MouseEvent) => void
+) {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.addEventListener("click", handler);
+    return () => el.removeEventListener("click", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handler]);
+  return ref;
 }

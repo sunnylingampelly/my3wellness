@@ -43,8 +43,8 @@ export function WhyChooseUs() {
     <section className="bg-background py-24 sm:py-32">
       <div className="container-luxe">
         <SectionHeading
-          eyebrow="The Anantara Standard"
-          title="Why Guests Choose Anantara"
+          eyebrow="The MY3 Standard"
+          title="Why Guests Choose MY3"
           description="Gachibowli has no shortage of massage centres. Here's what genuinely sets a five-star wellness sanctuary apart."
         />
 

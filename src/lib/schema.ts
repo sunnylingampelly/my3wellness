@@ -68,7 +68,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/brand/logo-source.png`,
+    logo: `${siteConfig.url}/images/brand/my3-icon.png`,
     sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
   };
 }
@@ -145,7 +145,7 @@ export function blogPostingSchema(post: BlogPost) {
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/images/brand/logo-source.png`,
+        url: `${siteConfig.url}/images/brand/my3-icon.png`,
       },
     },
     mainEntityOfPage: {

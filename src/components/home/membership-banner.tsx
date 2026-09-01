@@ -8,7 +8,7 @@ export function MembershipBanner() {
     <section className="bg-background py-16 sm:py-20">
       <div className="container-luxe">
         <Reveal>
-          <div className="flex flex-col items-center gap-6 rounded-[2rem] bg-forest px-8 py-14 text-center sm:px-16">
+          <div className="flex flex-col items-center gap-6 rounded-[2rem] bg-olive px-8 py-14 text-center sm:px-16">
             <span className="flex size-14 items-center justify-center rounded-full bg-cream/10 text-gold">
               <Crown className="size-6" strokeWidth={1.5} />
             </span>
@@ -16,7 +16,7 @@ export function MembershipBanner() {
               Make Wellness a Ritual, Not a Reminder
             </h2>
             <p className="max-w-md text-balance text-sm sm:text-base text-cream/75">
-              Anantara membership unlocks preferential pricing, priority booking, and a
+              MY3 membership unlocks preferential pricing, priority booking, and a
               complimentary birthday treatment — for guests who visit often.
             </p>
             <Link

@@ -11,7 +11,7 @@ import { signatureServices, combinationServices } from "@/content/services";
 export const metadata: Metadata = {
   title: "Massage & Spa Services in Gachibowli, Hyderabad",
   description:
-    "Explore Anantara Spa's full menu of signature and combination therapies — Swedish, Thai, Balinese, Deep Tissue, Couples Massage, and more, in Gachibowli, Hyderabad.",
+    "Explore MY3 Wellness Spa's full menu of signature and combination therapies — Swedish, Thai, Balinese, Deep Tissue, Couples Massage, and more, in Gachibowli, Hyderabad.",
   alternates: { canonical: "/services" },
 };
 

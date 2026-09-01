@@ -9,15 +9,25 @@
      OfferBar flips this to 0px on dismiss so the header slides back up flush
      with the viewport top instead of leaving a blank strip. */
   --offer-bar-h: 2.25rem;
+  /* Height reserved for the fixed contact TopBar (phone/email) that sits above
+     the offer bar. Desktop/tablet only — collapses to 0 on mobile, where the
+     same info already lives in MobileCtaBar, so nothing needs to reserve space. */
+  --topbar-h: 2.25rem;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --topbar-h: 0px;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-cormorant);
-  --font-accent: var(--font-manrope);
+  --font-sans: var(--font-worksans);
+  --font-heading: var(--font-playfair);
+  --font-accent: var(--font-jost);
   --font-mono: var(--font-geist-mono);
 
   --color-sidebar-ring: var(--sidebar-ring);
@@ -50,20 +60,23 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-  /* Raw brand palette, always available regardless of theme */
-  --color-forest: #2e5e57;
-  --color-forest-light: #4f7a72;
-  --color-sage: #c9d6cf;
+  /* Raw brand palette, always available regardless of theme — sampled from the MY3
+     Wellness Spa mark (gilded Buddha medallion + olive leaves + warm bronze wordmark). */
+  --color-olive: #4a5636;
+  --color-olive-light: #7c8558;
+  --color-sage: #d9dbc3;
   --color-cream: #f9f6f2;
   --color-beige: #e8ded0;
-  --color-ink: #242424;
+  --color-ink: #242420;
   --color-paper: #fcfcfa;
   --color-gold: #c7a96b;
   --color-gold-light: #e2cda3;
   /* Darker gold for text on light backgrounds — #c7a96b only hits ~2.2:1 contrast
      on white/cream and fails WCAG AA for text. Use gold-deep for any gold *text*
      sitting on a light surface; keep gold for icons/borders/dark backgrounds. */
-  --color-gold-deep: #7a6640;
+  --color-gold-deep: #6b5330;
+  /* Warm bronze-brown from the "WELLNESS SPA" wordmark — muted accent text/rules. */
+  --color-taupe: #5a4632;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -76,68 +89,68 @@
 
 :root {
   --background: #fcfcfa;
-  --foreground: #242424;
+  --foreground: #242420;
   --card: #ffffff;
-  --card-foreground: #242424;
+  --card-foreground: #242420;
   --popover: #ffffff;
-  --popover-foreground: #242424;
-  --primary: #2e5e57;
+  --popover-foreground: #242420;
+  --primary: #4a5636;
   --primary-foreground: #f9f6f2;
   --secondary: #e8ded0;
-  --secondary-foreground: #2e5e57;
+  --secondary-foreground: #4a5636;
   --muted: #f3efe8;
-  --muted-foreground: #6b6560;
+  --muted-foreground: #6b6154;
   --accent: #c7a96b;
-  --accent-foreground: #242424;
+  --accent-foreground: #242420;
   --destructive: #b3512f;
   --border: #e4ddd2;
   --input: #e4ddd2;
   --ring: #c7a96b;
-  --chart-1: #2e5e57;
-  --chart-2: #4f7a72;
+  --chart-1: #4a5636;
+  --chart-2: #7c8558;
   --chart-3: #c7a96b;
-  --chart-4: #c9d6cf;
+  --chart-4: #d9dbc3;
   --chart-5: #e8ded0;
   --radius: 0.5rem;
   --sidebar: #f9f6f2;
-  --sidebar-foreground: #242424;
-  --sidebar-primary: #2e5e57;
+  --sidebar-foreground: #242420;
+  --sidebar-primary: #4a5636;
   --sidebar-primary-foreground: #f9f6f2;
   --sidebar-accent: #e8ded0;
-  --sidebar-accent-foreground: #2e5e57;
+  --sidebar-accent-foreground: #4a5636;
   --sidebar-border: #e4ddd2;
   --sidebar-ring: #c7a96b;
 }
 
 .dark {
-  --background: #1b1f1d;
+  --background: #1a1d16;
   --foreground: #f3efe8;
-  --card: #232725;
+  --card: #23261d;
   --card-foreground: #f3efe8;
-  --popover: #232725;
+  --popover: #23261d;
   --popover-foreground: #f3efe8;
-  --primary: #9cbcb4;
-  --primary-foreground: #16201d;
-  --secondary: #2c332f;
+  --primary: #b3bc93;
+  --primary-foreground: #191d12;
+  --secondary: #303325;
   --secondary-foreground: #e8ded0;
-  --muted: #262b28;
-  --muted-foreground: #a8a29a;
+  --muted: #292b21;
+  --muted-foreground: #a8a196;
   --accent: #c7a96b;
-  --accent-foreground: #16201d;
+  --accent-foreground: #191d12;
   --destructive: #c96b48;
   --border: #ffffff14;
   --input: #ffffff1f;
   --ring: #c7a96b;
-  --chart-1: #9cbcb4;
-  --chart-2: #4f7a72;
+  --chart-1: #b3bc93;
+  --chart-2: #7c8558;
   --chart-3: #c7a96b;
-  --chart-4: #c9d6cf;
+  --chart-4: #d9dbc3;
   --chart-5: #e8ded0;
-  --sidebar: #1b1f1d;
+  --sidebar: #1a1d16;
   --sidebar-foreground: #f3efe8;
-  --sidebar-primary: #9cbcb4;
-  --sidebar-primary-foreground: #16201d;
-  --sidebar-accent: #2c332f;
+  --sidebar-primary: #b3bc93;
+  --sidebar-primary-foreground: #191d12;
+  --sidebar-accent: #303325;
   --sidebar-accent-foreground: #e8ded0;
   --sidebar-border: #ffffff14;
   --sidebar-ring: #c7a96b;
@@ -161,7 +174,7 @@
 
 @layer utilities {
   .font-accent {
-    font-family: var(--font-manrope);
+    font-family: var(--font-jost);
   }
 
   .text-balance {
@@ -244,6 +257,79 @@
 
   @media (prefers-reduced-motion: reduce) {
     .animate-offer-pulse {
+      animation: none;
+    }
+  }
+
+  /* Rotating multi-hue ring that travels continuously around a pill button's
+     border — used to draw the eye to the primary WhatsApp CTA. The ring is
+     drawn as a ::before sized slightly larger than the button and masked
+     down to just its edge (mask-composite: exclude), so only a thin band is
+     visible; the underlying button keeps its own solid fill and shadow. */
+  @property --glow-angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @keyframes glow-border-spin {
+    to {
+      --glow-angle: 360deg;
+    }
+  }
+
+  .btn-glow-border {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .btn-glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 3px;
+    background: conic-gradient(
+      from var(--glow-angle),
+      #25d366 0deg,
+      #f9f6f2 90deg,
+      #c7a96b 180deg,
+      #f9f6f2 270deg,
+      #25d366 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: glow-border-spin 2.8s linear infinite;
+    filter: blur(1px) saturate(1.15);
+  }
+
+  /* Soft ambient halo bleeding outward from the ring — makes it read as a
+     glow rather than a crisp spinning line. Kept subtle so it reads as a
+     gentle aura, not a spotlight. */
+  .btn-glow-border::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    z-index: -2;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--glow-angle),
+      #25d366 0deg,
+      #f9f6f2 90deg,
+      #c7a96b 180deg,
+      #f9f6f2 270deg,
+      #25d366 360deg
+    );
+    filter: blur(7px) saturate(1.2);
+    opacity: 0.35;
+    animation: glow-border-spin 2.8s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-glow-border::before,
+    .btn-glow-border::after {
       animation: none;
     }
   }

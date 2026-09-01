@@ -13,7 +13,7 @@ import { membershipFaqs } from "@/content/faqs";
 export const metadata: Metadata = {
   title: "Membership Plans",
   description:
-    "Anantara Spa membership — Silver, Gold, and Platinum plans with preferential pricing, priority booking, and complimentary birthday treatments.",
+    "MY3 Wellness Spa membership — Silver, Gold, and Platinum plans with preferential pricing, priority booking, and complimentary birthday treatments.",
   alternates: { canonical: "/membership" },
 };
 
@@ -27,7 +27,7 @@ export default function MembershipPage() {
         ])}
       />
       <PageHero
-        eyebrow="Anantara Membership"
+        eyebrow="MY3 Membership"
         title="Make Wellness a Ritual"
         description="For guests who visit often — preferential pricing, priority booking, and a few thoughtful extras."
         image="/images/gallery/gallery-03.png"

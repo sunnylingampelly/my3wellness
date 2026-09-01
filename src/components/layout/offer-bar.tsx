@@ -3,15 +3,17 @@
 import { useEffect, useState } from "react";
 import { Sparkles, X } from "lucide-react";
 
-const DISMISS_KEY = "anantara-offer-bar-dismissed";
+import { siteConfig } from "@/lib/site-config";
+
+const DISMISS_KEY = "my3-offer-bar-dismissed";
 
 function OfferMessage() {
   return (
     <span className="flex items-center gap-2">
       <Sparkles className="size-3 shrink-0 text-gold" strokeWidth={1.75} />
-      Welcome to Anantara Spa
+      Welcome to MY3 Wellness Spa
       <span className="text-gold">·</span>
-      <strong className="font-semibold text-gold">Flat 30% OFF on All Therapies</strong>
+      <strong className="font-semibold text-gold">{siteConfig.promo.headline}</strong>
     </span>
   );
 }
@@ -36,7 +38,7 @@ export function OfferBar() {
   if (dismissed) return null;
 
   return (
-    <div className="fixed inset-x-0 top-0 z-[60] flex h-9 items-center bg-ink text-cream">
+    <div className="fixed inset-x-0 top-[var(--topbar-h)] z-[60] flex h-9 items-center bg-ink text-cream">
       <div className="relative flex-1 overflow-hidden">
         <div className="animate-marquee-track flex w-max items-center gap-10 whitespace-nowrap font-accent text-[11px] uppercase tracking-[0.12em] sm:text-xs">
           {[0, 1].map((i) => (

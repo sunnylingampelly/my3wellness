@@ -12,13 +12,11 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-forest text-cream">
+    <footer className="bg-olive text-cream">
       <div className="container-luxe py-16 sm:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-5">
-            <div className="[&_img]:bg-cream/0 rounded-full bg-cream/95 inline-flex w-fit p-1">
-              <Logo size={52} />
-            </div>
+            <Logo size={48} />
             <p className="max-w-xs text-sm leading-relaxed text-cream/85">
               {siteConfig.shortDescription}
             </p>
@@ -27,7 +25,7 @@ export function Footer() {
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Anantara Spa on Instagram"
+                aria-label={`${siteConfig.name} on Instagram`}
                 className="flex size-9 items-center justify-center rounded-full border border-cream/25 text-cream/85 transition-colors hover:border-gold hover:text-gold"
               >
                 <InstagramIcon className="size-4" />
@@ -36,7 +34,7 @@ export function Footer() {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Anantara Spa on Facebook"
+                aria-label={`${siteConfig.name} on Facebook`}
                 className="flex size-9 items-center justify-center rounded-full border border-cream/25 text-cream/85 transition-colors hover:border-gold hover:text-gold"
               >
                 <FacebookIcon className="size-4" />

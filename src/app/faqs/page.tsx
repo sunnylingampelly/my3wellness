@@ -11,7 +11,7 @@ import { generalFaqs, membershipFaqs } from "@/content/faqs";
 export const metadata: Metadata = {
   title: "FAQs",
   description:
-    "Answers to common questions about Anantara Spa, Gachibowli — location, hours, booking, hygiene standards, and choosing the right massage therapy.",
+    "Answers to common questions about MY3 Wellness Spa, Gachibowli — location, hours, booking, hygiene standards, and choosing the right massage therapy.",
   alternates: { canonical: "/faqs" },
 };
 
@@ -30,7 +30,7 @@ export default function FaqsPage() {
       <PageHero
         eyebrow="Good to Know"
         title="Frequently Asked Questions"
-        description="Everything guests usually ask before their first visit to Anantara Spa in Gachibowli."
+        description="Everything guests usually ask before their first visit to MY3 Wellness Spa in Gachibowli."
         image="/images/gallery/gallery-07.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "FAQs" }]}
       />
@@ -49,7 +49,7 @@ export default function FaqsPage() {
                 minutes during business hours.
               </p>
               <WhatsAppLink
-                message="Hi, I have a question about Anantara Spa."
+                message="Hi, I have a question about MY3 Wellness Spa."
                 className="mt-2 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 <WhatsAppIcon className="size-4" />

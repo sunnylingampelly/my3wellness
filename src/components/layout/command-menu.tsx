@@ -76,7 +76,7 @@ export function CommandMenuProvider({ children }: { children: React.ReactNode })
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
-        title="Search Anantara Spa"
+        title="Search MY3 Wellness Spa"
         description="Search pages, treatments, and the journal"
       >
         <Command>

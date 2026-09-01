@@ -1,6 +1,6 @@
-# Anantara Spa — Website
+# MY3 Wellness Spa — Website
 
-Marketing website for Anantara Spa, a luxury day spa in Gachibowli, Hyderabad.
+Marketing website for MY3 Wellness Spa, a luxury day spa in Gachibowli, Hyderabad.
 Static site, no backend — all bookings route to phone/WhatsApp.
 
 ## Stack
@@ -29,7 +29,7 @@ src/
     schema.ts             JSON-LD builders (LocalBusiness/DaySpa, FAQPage, Breadcrumb, Service, BlogPosting)
     links.ts               tel: / wa.me / mailto: link builders
 public/
-  images/                Real photography + logo pulled from the live site
+  images/                Photography + brand assets (see `images/brand/`)
   icons/                  Generated PWA icon set
 ```
 
@@ -37,12 +37,27 @@ To change a price, service description, FAQ, or blog post, edit the correspondin
 
 ## Content that needs a final pass before launch
 
-- **Business hours** (`siteConfig.hours` in `src/lib/site-config.ts`) — not published anywhere we could verify; currently a placeholder (10 AM–9 PM daily). Confirm and update.
+This codebase started life as a build for a different, unrelated spa and has since been
+rebranded end-to-end to MY3 Wellness Spa (name, logo, colors, fonts, copy). The pieces
+below are **placeholders** left in place of that previous business's real data and must
+be replaced with MY3's actual details before going live:
+
+- **Street address** (`siteConfig.address` in `src/lib/site-config.ts`) — phone and email are MY3's real, confirmed details; the exact building/floor is still a placeholder. Confirm before launch.
+- **Domain** (`siteConfig.url`) — set to `https://my3wellnessspa.in`, MY3's real domain.
+- **Analytics IDs** (`siteConfig.gtmId` / `googleAdsId` / `ga4Id`) — placeholder `GTM-XXXXXXX` / `AW-XXXXXXXXXX` / `G-XXXXXXXXXX`. Fill in MY3's own containers — do not reuse a previous owner's IDs.
+- **Google Maps embed** (`siteConfig.address.mapsEmbedSrc`) — uses a keyless address-search embed until MY3 has a real Google Business Profile to pull a proper "Share > Embed a map" link from.
+- **Social handles** (`siteConfig.social`) — illustrative, not verified to exist. Replace with MY3's real profiles.
+- **Business hours** (`siteConfig.hours`) — placeholder (10 AM–9 PM daily). Confirm and update.
 - **Testimonials** (`src/content/testimonials.ts`) — illustrative placeholders, not real guest quotes. Replace with verified reviews before launch.
-- **Membership tiers & pricing** (`src/content/membership.ts`) — proposed new program per the site brief; Anantara doesn't currently publish a membership plan. Review pricing/benefits before launch.
-- **Email typo** — the live site listed `anantaraspa2025@gamil.com`; this looks like a `gmail.com` typo, so the site uses the corrected address. Confirm which is actually monitored.
-- **Photography** — gallery/hero images are reused from the current live site. For a true five-star presentation, commission professional photography per the brand brief (warm lighting, no stock-looking posed shots).
-- **Google review count / rating** — intentionally not included as structured data (`aggregateRating`) since no verified rating was available. Add once you have a real, current Google rating to cite.
+- **Membership tiers & pricing** (`src/content/membership.ts`) — proposed program per the original site brief; review pricing/benefits before launch.
+- **Photography** — gallery/hero images are inherited from the original build. Commission photography that matches MY3's actual space before launch.
+- **Google review count / rating** — intentionally not included as structured data (`aggregateRating`) since no verified rating exists yet. Add once you have a real, current Google rating to cite.
+
+## Brand
+
+- **Logo**: `public/images/brand/my3-logo.webp` (full wordmark lockup, used site-wide via `src/components/ui-custom/logo.tsx`) and `public/images/brand/my3-icon.png` (square medallion crop, used for favicons/app icons/JSON-LD).
+- **Fonts**: Playfair Display (headings), Jost (uppercase nav/labels/buttons), Work Sans (body) — wired up in `src/app/layout.tsx`.
+- **Colors**: gold (`--color-gold`), olive-green (`--color-olive`), warm bronze (`--color-taupe`), sampled directly from the logo. Full palette in `src/app/globals.css`.
 
 ## Development
 
@@ -60,7 +75,7 @@ This is a static-first Next.js app with no environment variables or database req
 
 1. Push this repo to GitHub/GitLab/Bitbucket.
 2. Import it in [Vercel](https://vercel.com/new) — it will detect Next.js automatically.
-3. Update `siteConfig.url` in `src/lib/site-config.ts` if the production domain differs from `https://anantaraspa.org`.
+3. `siteConfig.url` in `src/lib/site-config.ts` is already set to MY3's real domain (`https://my3wellnessspa.in`) — update it here if that ever changes.
 4. Deploy.
 
 ## SEO/PWA notes

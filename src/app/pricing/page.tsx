@@ -13,7 +13,7 @@ import { signatureServices, combinationServices } from "@/content/services";
 export const metadata: Metadata = {
   title: "Massage Pricing in Gachibowli, Hyderabad",
   description:
-    "Transparent pricing for every treatment at Anantara Spa, Gachibowli — Swedish, Thai, Balinese, Deep Tissue, and combination therapies, from 60 to 120 minutes.",
+    "Transparent pricing for every treatment at MY3 Wellness Spa, Gachibowli — Swedish, Thai, Balinese, Deep Tissue, and combination therapies, from 60 to 120 minutes.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -79,7 +79,7 @@ export default function PricingPage() {
           </Reveal>
           <Reveal delay={0.06}>
             <p className="max-w-md text-sm sm:text-base text-muted-foreground">
-              Anantara members receive preferential pricing on every visit. See our
+              MY3 members receive preferential pricing on every visit. See our
               membership plans or message us directly to check current offers.
             </p>
           </Reveal>

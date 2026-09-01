@@ -13,7 +13,7 @@ export function GalleryTeaser() {
     <section className="bg-background py-24 sm:py-32">
       <div className="container-luxe">
         <SectionHeading
-          eyebrow="Inside Anantara"
+          eyebrow="Inside MY3"
           title="A Glimpse of the Sanctuary"
           description="Warm light, natural textures, and quiet detail — a preview of what awaits inside."
         />

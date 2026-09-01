@@ -11,6 +11,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui-custom/reveal";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { CallLink } from "@/components/ui-custom/call-link";
+import { DirectionsLink } from "@/components/ui-custom/directions-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 import { areas, getAreaBySlug } from "@/content/areas";
@@ -34,8 +35,8 @@ function heroImageFor(slug: string) {
 
 const LOCATION_FAQS = generalFaqs.filter((f) =>
   [
-    "Where exactly is Anantara Spa located",
-    "How do I get to Anantara Spa",
+    "Where exactly is MY3 Wellness Spa located",
+    "How do I get to MY3 Wellness Spa",
     "Do I need to book in advance",
     "Which massage is best for chronic back and shoulder pain",
   ].some((q) => f.question.startsWith(q))
@@ -59,7 +60,7 @@ export async function generateMetadata({
     description: area.shortDescription,
     alternates: { canonical: `/spa-near/${area.slug}` },
     openGraph: {
-      title: `Spa Near ${area.name} | Anantara Spa`,
+      title: `Spa Near ${area.name} | MY3 Wellness Spa`,
       description: area.shortDescription,
     },
   };
@@ -103,20 +104,10 @@ export default async function AreaLandingPage({
 
       <section className="bg-background py-24 sm:py-28">
         <div className="container-luxe grid grid-cols-1 gap-14 lg:grid-cols-3 lg:gap-16">
-          <div className="lg:col-span-2">
-            <Reveal>
-              <span className="font-accent text-xs sm:text-sm uppercase tracking-[0.28em] text-gold-deep">
-                Why {area.name} Chooses Anantara
-              </span>
-            </Reveal>
-            <Reveal delay={0.06}>
-              <p className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
-                {area.intro}
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-1">
+          {/* CTA card first in DOM/mobile order — visible above the fold on a
+              phone instead of buried below the intro paragraph. `lg:order-2`
+              restores the original right-column position on desktop. */}
+          <div className="order-1 lg:order-2 lg:col-span-1">
             <Reveal delay={0.1}>
               <div className="rounded-3xl border border-gold/50 bg-card p-7 sm:p-8">
                 <h2 className="font-heading text-xl text-foreground">Find Us From {area.name}</h2>
@@ -126,19 +117,14 @@ export default async function AreaLandingPage({
                     <span>{siteConfig.address.full}</span>
                   </li>
                   <li>
-                    <a
-                      href={siteConfig.address.mapsDirectionsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-primary underline-offset-4 hover:underline"
-                    >
+                    <DirectionsLink className="inline-flex items-center gap-1.5 text-primary underline-offset-4 hover:underline">
                       <Car className="size-3.5" strokeWidth={1.5} />
                       Get directions from {area.name}
-                    </a>
+                    </DirectionsLink>
                   </li>
                 </ul>
                 <WhatsAppLink
-                  message={`Hi, I'm near ${area.name} and I'd like to book an appointment at Anantara Spa.`}
+                  message={`Hi, I'm near ${area.name} and I'd like to book an appointment at MY3 Wellness Spa.`}
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   <WhatsAppIcon className="size-4" />
@@ -148,6 +134,19 @@ export default async function AreaLandingPage({
                   {siteConfig.contact.phoneDisplay}
                 </CallLink>
               </div>
+            </Reveal>
+          </div>
+
+          <div className="order-2 lg:order-1 lg:col-span-2">
+            <Reveal>
+              <span className="font-accent text-xs sm:text-sm uppercase tracking-[0.28em] text-gold-deep">
+                Why {area.name} Chooses MY3
+              </span>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <p className="mt-6 text-base sm:text-lg leading-relaxed text-muted-foreground">
+                {area.intro}
+              </p>
             </Reveal>
           </div>
         </div>

@@ -41,12 +41,13 @@ export function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "fixed inset-x-0 top-[var(--offer-bar-h)] z-50 transition-[top,background-color,border-color] duration-300",
+        "fixed inset-x-0 top-[calc(var(--topbar-h)+var(--offer-bar-h))] z-50 transition-[top,background-color,border-color] duration-300",
         scrolled ? "glass shadow-[0_1px_0_0_rgba(0,0,0,0.04)]" : "bg-transparent"
       )}
     >
-      <div className="container-luxe flex h-24 items-center justify-between">
-        <Logo size={64} />
+      <div className="container-luxe flex h-16 items-center justify-between sm:h-24">
+        <Logo size={40} className="sm:hidden" />
+        <Logo size={64} className="hidden sm:flex" />
 
         <nav aria-label="Primary" className="hidden lg:flex items-center gap-9">
           {NAV_LINKS.map((link) => {
@@ -93,7 +94,7 @@ export function Header() {
               "inline-flex items-center gap-2 pl-1 pr-2 transition-colors",
               scrolled ? "text-foreground/75 hover:text-primary" : "text-cream/85 hover:text-cream"
             )}
-            aria-label="Call Anantara Spa"
+            aria-label="Call MY3 Wellness Spa"
           >
             <Phone className="size-[16px]" strokeWidth={1.5} />
           </CallLink>

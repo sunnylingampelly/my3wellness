@@ -13,7 +13,7 @@ import { areas } from "@/content/areas";
 export const metadata: Metadata = {
   title: "Spa Near Me — Gachibowli, HITEC City & Nearby Business Hubs",
   description:
-    "Anantara Spa serves professionals across Gachibowli, HITEC City, the Financial District, Wipro Circle, Mindspace, and DLF Cyber City. Find directions and recommended therapies for your area.",
+    "MY3 Wellness Spa serves professionals across Gachibowli, HITEC City, the Financial District, Wipro Circle, Mindspace, and DLF Cyber City. Find directions and recommended therapies for your area.",
   alternates: { canonical: "/spa-near" },
 };
 
@@ -38,7 +38,7 @@ export default function SpaNearIndexPage() {
       <PageHero
         eyebrow="Serving Hyderabad's IT Corridor"
         title="A Luxury Spa Near Your Office"
-        description="Anantara Spa sits in Gachibowli-Raidurg, minutes from the business hubs below. Pick your area for directions and the therapies our guests from there love most."
+        description="MY3 Wellness Spa sits in Gachibowli-Raidurg, minutes from the business hubs below. Pick your area for directions and the therapies our guests from there love most."
         image="/images/gallery/gallery-08.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "Spa Near You" }]}
       />

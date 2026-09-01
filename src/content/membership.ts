@@ -1,4 +1,4 @@
-// Proposed membership program per the site brief. Anantara Spa does not currently
+// Proposed membership program per the site brief. MY3 Wellness Spa does not currently
 // publish a membership plan — pricing and benefits below are suggested starting
 // points and should be reviewed/priced by the client before launch.
 

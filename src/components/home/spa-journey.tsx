@@ -8,7 +8,7 @@ export function SpaJourney() {
         <SectionHeading
           eyebrow="The Experience"
           title="Your Journey With Us"
-          description="A visit to Anantara Spa is never rushed. Here's what to expect from arrival to checkout."
+          description="A visit to MY3 Wellness Spa is never rushed. Here's what to expect from arrival to checkout."
         />
         <div className="mt-16">
           <JourneyTimeline />

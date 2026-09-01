@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
 
 import { Input } from "@/components/ui/input";
@@ -14,23 +14,41 @@ export function ContactForm() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
 
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    const lines = [
-      `Hi Anantara Spa, my name is ${name || "—"}.`,
-      phone ? `My phone number is ${phone}.` : "",
-      message || "I'd like to know more about your treatments.",
-    ].filter(Boolean);
-    const url = `https://wa.me/${siteConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-      lines.join(" ")
-    )}`;
-    trackEvent("contact_form_whatsapp_submit");
-    reportWhatsAppConversion();
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
+  const formRef = useRef<HTMLFormElement>(null);
+  // Always holds the latest field values so the native submit listener below
+  // (attached once, not re-bound on every keystroke) never reads stale state.
+  const fieldsRef = useRef({ name, phone, message });
+  fieldsRef.current = { name, phone, message };
+
+  // Native 'submit' listener instead of React's onSubmit prop — React's
+  // synthetic event delegation was found to silently fail to invoke handlers
+  // on this site's conversion-reporting elements in production, so this form
+  // could open WhatsApp without ever recording the conversion. A listener
+  // attached directly to the form node bypasses that.
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+    const handler = (e: SubmitEvent) => {
+      e.preventDefault();
+      const { name, phone, message } = fieldsRef.current;
+      const lines = [
+        `Hi MY3 Wellness Spa, my name is ${name || "—"}.`,
+        phone ? `My phone number is ${phone}.` : "",
+        message || "I'd like to know more about your treatments.",
+      ].filter(Boolean);
+      const url = `https://wa.me/${siteConfig.contact.whatsappRaw}?text=${encodeURIComponent(
+        lines.join(" ")
+      )}`;
+      trackEvent("contact_form_whatsapp_submit");
+      reportWhatsAppConversion();
+      window.open(url, "_blank", "noopener,noreferrer");
+    };
+    form.addEventListener("submit", handler);
+    return () => form.removeEventListener("submit", handler);
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+    <form ref={formRef} className="flex flex-col gap-5">
       <div className="flex flex-col gap-2">
         <Label htmlFor="name">Your Name</Label>
         <Input

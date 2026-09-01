@@ -16,7 +16,7 @@ import { services } from "@/content/services";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Discover the philosophy behind Anantara Spa, Gachibowli — a luxury wellness sanctuary blending time-tested therapies with modern relaxation for Hyderabad's busiest professionals.",
+    "Discover the philosophy behind MY3 Wellness Spa, Gachibowli — a luxury wellness sanctuary blending time-tested therapies with modern relaxation for Hyderabad's busiest professionals.",
   alternates: { canonical: "/about" },
 };
 
@@ -57,8 +57,8 @@ export default function AboutPage() {
         ])}
       />
       <PageHero
-        eyebrow="About Anantara Spa"
-        title="A Sanctuary of Reflection"
+        eyebrow="About MY3 Wellness Spa"
+        title="Mind. Body. Balance."
         description="In the heart of Gachibowli, a private wellness retreat built for the mind that rarely stops and the body that rarely rests."
         image="/images/gallery/gallery-09.jpg"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "About" }]}
@@ -80,7 +80,7 @@ export default function AboutPage() {
             <Reveal delay={0.16}>
               <div className="mt-6 flex flex-col gap-4 text-base sm:text-lg leading-relaxed text-muted-foreground">
                 <p>
-                  Anantara Spa was founded on a simple observation: Gachibowli&rsquo;s
+                  MY3 Wellness Spa was founded on a simple observation: Gachibowli&rsquo;s
                   professionals were working harder than ever, yet had fewer genuine
                   spaces to disconnect. We built this sanctuary to change that — a
                   place where relaxation is never rushed and healing is treated as
@@ -105,7 +105,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
               <Image
                 src="/images/gallery/gallery-04.png"
-                alt="Rolled towels, candles, and frangipani flowers at Anantara Spa Gachibowli"
+                alt="Rolled towels, candles, and frangipani flowers at MY3 Wellness Spa Gachibowli"
                 fill
                 sizes="(max-width: 1024px) 90vw, 45vw"
                 className="object-cover"
@@ -135,7 +135,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-forest py-20 sm:py-24">
+      <section className="bg-olive py-20 sm:py-24">
         <div className="container-luxe grid grid-cols-2 gap-8 sm:grid-cols-4">
           <StatCounter tone="dark" value={siteConfig.yearsOfExperience} suffix="+" label="Years of Care" />
           <StatCounter tone="dark" value={services.length} suffix="+" label="Curated Therapies" />
@@ -148,7 +148,7 @@ export default function AboutPage() {
         <div className="container-luxe flex flex-col items-center gap-6 text-center">
           <Reveal>
             <h2 className="max-w-xl text-balance font-heading text-3xl sm:text-4xl font-medium text-foreground">
-              Ready to experience Anantara for yourself?
+              Ready to experience MY3 for yourself?
             </h2>
           </Reveal>
           <Reveal delay={0.08}>

@@ -10,7 +10,7 @@ import { galleryImages } from "@/content/gallery";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "A visual tour of Anantara Spa, Gachibowli — private treatment suites, natural textures, and the warm, candlelit ambience of our wellness sanctuary.",
+    "A visual tour of MY3 Wellness Spa, Gachibowli — private treatment suites, natural textures, and the warm, candlelit ambience of our wellness sanctuary.",
   alternates: { canonical: "/gallery" },
 };
 
@@ -24,9 +24,9 @@ export default function GalleryPage() {
         ])}
       />
       <PageHero
-        eyebrow="Inside Anantara"
+        eyebrow="Inside MY3"
         title="A Visual Tour of the Sanctuary"
-        description="Warm light, natural textures, and the quiet detail that defines every corner of Anantara Spa."
+        description="Warm light, natural textures, and the quiet detail that defines every corner of MY3 Wellness Spa."
         image="/images/gallery/gallery-08.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "Gallery" }]}
       />
@@ -36,7 +36,7 @@ export default function GalleryPage() {
           <SectionHeading
             eyebrow="Tap to Enlarge"
             title="Moments From Inside"
-            description="A preview of the textures, tools, and ambience that shape every Anantara treatment."
+            description="A preview of the textures, tools, and ambience that shape every MY3 treatment."
           />
           <div className="mt-14">
             <GalleryGrid images={galleryImages} />

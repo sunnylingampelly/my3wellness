@@ -11,7 +11,7 @@ import { blogPosts } from "@/content/blog";
 export const metadata: Metadata = {
   title: "The Journal",
   description:
-    "Wellness guides and local insights from Anantara Spa, Gachibowli — massage comparisons, spa etiquette, and how to make the most of your visit to Hyderabad's wellness scene.",
+    "Wellness guides and local insights from MY3 Wellness Spa, Gachibowli — massage comparisons, spa etiquette, and how to make the most of your visit to Hyderabad's wellness scene.",
   alternates: { canonical: "/blog" },
 };
 
@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
       />
       <PageHero
         eyebrow="The Journal"
-        title="Wellness Notes From Anantara"
+        title="Wellness Notes From MY3"
         description="Guides on massage, wellness, and making the most of a spa visit in Hyderabad."
         image="/images/gallery/gallery-02.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "Journal" }]}

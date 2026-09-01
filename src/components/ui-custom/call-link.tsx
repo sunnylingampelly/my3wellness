@@ -3,18 +3,14 @@
 import type { ComponentPropsWithoutRef } from "react";
 
 import { telLink } from "@/lib/links";
-import { reportCallConversion } from "@/lib/analytics";
+import { reportCallConversion, useNativeClick } from "@/lib/analytics";
 
 export function CallLink({ onClick, ...props }: ComponentPropsWithoutRef<"a">) {
-  return (
-    <a
-      href={telLink()}
-      onClick={(e) => {
-        e.preventDefault();
-        reportCallConversion(telLink());
-        onClick?.(e);
-      }}
-      {...props}
-    />
-  );
+  const ref = useNativeClick<HTMLAnchorElement>((e) => {
+    e.preventDefault();
+    reportCallConversion(telLink());
+    onClick?.(e as unknown as React.MouseEvent<HTMLAnchorElement>);
+  });
+
+  return <a ref={ref} href={telLink()} {...props} />;
 }

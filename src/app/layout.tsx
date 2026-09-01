@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, Inter, Manrope } from "next/font/google";
+import { Playfair_Display, Work_Sans, Jost } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
@@ -11,32 +11,35 @@ import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provi
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CommandMenuProvider } from "@/components/layout/command-menu";
 import { Header } from "@/components/layout/header";
+import { TopBar } from "@/components/layout/top-bar";
 import { OfferBar } from "@/components/layout/offer-bar";
 import { Footer } from "@/components/layout/footer";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
-import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
+import { FloatingCta } from "@/components/layout/floating-cta";
+import { ChatBubble } from "@/components/layout/chat-bubble";
+import { DiscountPopup } from "@/components/layout/discount-popup";
 import { BackToTop } from "@/components/layout/back-to-top";
 import { ScrollProgress } from "@/components/layout/scroll-progress";
 import { CursorGlow } from "@/components/layout/cursor-glow";
 import { SwRegister } from "@/components/providers/sw-register";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const workSans = Work_Sans({
+  variable: "--font-worksans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const jost = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -105,7 +108,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#fcfcfa" },
-    { media: "(prefers-color-scheme: dark)", color: "#1b1f1d" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1d16" },
   ],
 };
 
@@ -118,7 +121,7 @@ export default function RootLayout({
     <html
       lang="en-IN"
       suppressHydrationWarning
-      className={`${cormorant.variable} ${inter.variable} ${manrope.variable} h-full antialiased`}
+      className={`${playfairDisplay.variable} ${workSans.variable} ${jost.variable} h-full antialiased`}
     >
       <head>
         <Script id="gtm-init" strategy="beforeInteractive">
@@ -137,9 +140,6 @@ export default function RootLayout({
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${siteConfig.googleAdsId}');
-          gtag('config', 'AW-18366122950/GvjwCP7t0-EcEMaX07VE', {
-            'phone_conversion_number': '9948481838'
-          });
           gtag('config', '${siteConfig.ga4Id}');`}
         </Script>
       </head>
@@ -165,13 +165,16 @@ export default function RootLayout({
                 </a>
                 <ScrollProgress />
                 <CursorGlow />
+                <TopBar />
                 <OfferBar />
-                {/* Reserves the same space OfferBar occupies (and collapses with it
-                    on dismiss via the shared --offer-bar-h var) so the fixed Header
-                    and page content below don't need their own clearance changed. */}
+                {/* Reserves the same space TopBar + OfferBar occupy (and collapses
+                    with OfferBar on dismiss via the shared --offer-bar-h var, and
+                    with TopBar below the md breakpoint via --topbar-h) so the fixed
+                    Header and page content below don't need their own clearance
+                    changed. */}
                 <div
                   aria-hidden="true"
-                  className="h-[var(--offer-bar-h)] transition-[height] duration-300"
+                  className="h-[calc(var(--topbar-h)+var(--offer-bar-h))] transition-[height] duration-300"
                 />
                 <Header />
                 <main id="main-content" className="flex-1">
@@ -179,7 +182,9 @@ export default function RootLayout({
                 </main>
                 <Footer />
                 <MobileCtaBar />
-                <WhatsAppFloat />
+                <FloatingCta />
+                <ChatBubble />
+                <DiscountPopup />
                 <BackToTop />
                 <SwRegister />
               </CommandMenuProvider>

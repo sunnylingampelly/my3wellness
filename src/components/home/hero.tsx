@@ -1,12 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ChevronDown, Phone, PartyPopper } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { Phone, PartyPopper } from "lucide-react";
 
 import { CallLink } from "@/components/ui-custom/call-link";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
+import { siteConfig } from "@/lib/site-config";
 
 const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   id: i,
@@ -16,8 +24,35 @@ const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   delay: (i % 5) * -3,
 }));
 
+// Desktop/tablet only — three real MY3 treatment moments, each with its own
+// short line, rotating instead of one static scene. Mobile stays a single
+// fixed image (see the <picture>-style split below), no slideshow.
+const SLIDES = [
+  {
+    image: "/images/gallery/hero-2.webp",
+    alt: "Therapist performing a warm herbal compress massage on a guest's back",
+    headline: "Relax.",
+    subtext: "Skilled hands ease every knot of everyday tension away.",
+  },
+  {
+    image: "/images/gallery/hero-web.webp",
+    alt: "Private, candlelit MY3 Wellness Spa treatment suite with a garden water feature",
+    headline: "Rejuvenate.",
+    subtext: "Step into a private suite framed by candlelight and greenery.",
+  },
+  {
+    image: "/images/gallery/hero-1.webp",
+    alt: "Serene, candlelit private treatment suite ready for a guest",
+    headline: "Rediscover Yourself.",
+    subtext: "A private sanctuary in the heart of Gachibowli.",
+  },
+];
+
+const SLIDE_DURATION = 6000;
+
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
   const mvX = useMotionValue(0);
   const mvY = useMotionValue(0);
   const springX = useSpring(mvX, { stiffness: 40, damping: 16 });
@@ -37,23 +72,66 @@ export function Hero() {
     return () => window.removeEventListener("mousemove", handler);
   }, [mvX, mvY]);
 
+  // Auto-advance the slideshow; restarts whenever a dot is clicked so the
+  // full duration is always given to whichever slide the visitor chose.
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setIndex((i) => (i + 1) % SLIDES.length);
+    }, SLIDE_DURATION);
+    return () => window.clearInterval(timer);
+  }, [index]);
+
+  const slide = SLIDES[index];
+
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink"
+      className="relative flex min-h-[calc(100svh-var(--offer-bar-h))] flex-col overflow-hidden bg-ink sm:h-[calc(100svh-var(--topbar-h)-var(--offer-bar-h))]"
     >
-      <motion.div style={{ x: bgX, y: bgY }} className="absolute inset-0 scale-100 sm:scale-110">
-        <picture>
-          <source media="(min-width: 640px)" srcSet="/images/gallery/hero-web.webp" />
-          <img
-            src="/images/gallery/mobile-hero.webp"
-            alt="Private, candlelit Anantara Spa treatment suite with a garden water feature"
-            className="absolute inset-0 h-full w-full object-cover"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </picture>
+      {/* Desktop/tablet: rotating slideshow */}
+      <motion.div
+        style={{ x: bgX, y: bgY }}
+        className="absolute inset-0 hidden scale-110 sm:block"
+      >
+        {SLIDES.map((s, i) => (
+          <motion.div
+            key={s.image}
+            className="absolute inset-0"
+            initial={false}
+            animate={{ opacity: i === index ? 1 : 0 }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Image
+              src={s.image}
+              alt={s.alt}
+              fill
+              sizes="100vw"
+              priority={i === 0}
+              className="object-cover"
+            />
+          </motion.div>
+        ))}
       </motion.div>
+
+      {/* Mobile: short looping background video, no slideshow. Poster is the
+          previous static hero shot — instant first paint, and the fallback
+          for any browser that can't/won't autoplay the clip. */}
+      <div className="absolute inset-0 sm:hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          preload="auto"
+          poster="/images/gallery/mobile-hero.webp"
+          aria-hidden="true"
+          className="size-full object-cover"
+        >
+          <source src="/images/gallery/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/30" />
       <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-ink/40" />
 
@@ -74,18 +152,18 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="container-luxe relative z-10 flex flex-col items-center pt-24 pb-14 text-center sm:items-start sm:pb-0 sm:text-left">
+      <div className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-center pt-[4.5rem] pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-center sm:pt-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
         >
           <WhatsAppLink
-            message="Hi Anantara Spa, I'd like to book a treatment with the 30% off offer."
-            className="animate-offer-pulse inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-1.5 font-accent text-[11px] font-semibold uppercase tracking-[0.08em] text-ink transition-transform hover:scale-[1.04] active:scale-95 sm:text-xs"
+            message={`Hi MY3 Wellness Spa, I'd like to book a treatment with the ${siteConfig.promo.percent}% off offer.`}
+            className="animate-offer-pulse inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1 font-accent text-[10px] font-semibold uppercase tracking-[0.08em] text-ink transition-transform hover:scale-[1.04] active:scale-95 sm:px-4 sm:py-1.5 sm:text-xs"
           >
-            <PartyPopper className="size-3.5" strokeWidth={2} />
-            Flat 30% Off All Therapies
+            <PartyPopper className="size-3 sm:size-3.5" strokeWidth={2} />
+            {siteConfig.promo.headline}
           </WhatsAppLink>
         </motion.div>
 
@@ -93,83 +171,95 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-4 font-accent text-xs sm:text-sm uppercase tracking-[0.32em] text-gold"
+          className="mt-2.5 font-accent text-[10px] uppercase tracking-[0.24em] text-gold sm:mt-4 sm:text-sm sm:tracking-[0.32em]"
         >
-          Anantara Spa &middot; Gachibowli, Hyderabad
+          MY3 Wellness Spa &middot; Gachibowli, Hyderabad
         </motion.span>
 
-        <h1 className="mt-5 max-w-3xl font-heading text-4xl sm:text-6xl lg:text-7xl font-medium leading-[1.15] sm:leading-[1.05] text-cream">
-          {/* Mobile: short, punchy, single idea */}
+        <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-[1.15] text-cream sm:mt-5 sm:text-6xl sm:leading-[1.1] lg:text-7xl">
+          {/* Mobile: fixed, short — no slideshow to sync with */}
           <motion.span
-            initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="block text-balance sm:hidden"
           >
             Relax. Rejuvenate.
-            <br />
-            Rediscover Yourself.
           </motion.span>
 
-          {/* Desktop: full staged headline */}
-          {["Luxury Spa in Gachibowli.", "Relax, Rejuvenate,", "Rediscover Yourself."].map((line, i) => (
-            <motion.span
-              key={line}
-              initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1, delay: 0.3 + i * 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden text-balance sm:block"
-            >
-              {line}
-            </motion.span>
-          ))}
+          {/* Desktop/tablet: synced to the current slide */}
+          <span className="hidden sm:block">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={slide.headline}
+                initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -14, filter: "blur(8px)" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="block text-balance"
+              >
+                {slide.headline}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-4 max-w-xs text-balance text-sm text-cream/80 sm:mt-6 sm:max-w-md sm:text-base sm:text-lg"
-        >
-          <span className="sm:hidden">Your private escape in Gachibowli.</span>
-          <span className="hidden sm:inline">
-            A private sanctuary in the heart of Gachibowli, where time-tested therapies
-            meet unhurried, modern calm — minutes from HITEC City and the Financial District.
-          </span>
-        </motion.p>
+        <div className="mt-2 max-w-xs sm:mt-4 sm:max-w-md">
+          <p className="text-balance text-xs text-cream/80 sm:hidden">
+            Your private escape in Gachibowli.
+          </p>
+          {/* Reserved height only matters on desktop, where the text swaps per slide. */}
+          <div className="hidden sm:flex sm:h-8 sm:items-start sm:justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={slide.subtext}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-balance text-sm text-cream/80 sm:text-base sm:text-lg"
+              >
+                {slide.subtext}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.05 }}
-          className="mt-8 flex w-full flex-col items-center gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:gap-4"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-4 flex w-full flex-col items-center gap-4 sm:mt-8 sm:w-auto sm:flex-row sm:gap-6"
         >
-          <WhatsAppLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-gold px-7 py-4 font-accent text-sm uppercase tracking-[0.14em] text-ink shadow-lg shadow-gold/20 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5">
+          <WhatsAppLink className="btn-glow-border inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-white shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
             <WhatsAppIcon className="size-4" />
             Book Appointment
           </WhatsAppLink>
-          <CallLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full border border-cream/40 px-7 py-3.5 font-accent text-xs uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto sm:max-w-none sm:text-sm">
+          <CallLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full border border-cream/40 px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
             <Phone className="size-4" strokeWidth={1.75} />
             Call Now
           </CallLink>
         </motion.div>
-      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
-        className="absolute inset-x-0 bottom-8 z-10 hidden justify-center sm:flex"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-cream/60"
-        >
-          <span className="font-accent text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-          <ChevronDown className="size-4" strokeWidth={1.5} />
-        </motion.div>
-      </motion.div>
+        <div className="mt-5 hidden items-center gap-2 sm:mt-6 sm:flex">
+          {SLIDES.map((s, i) => (
+            <button
+              key={s.image}
+              type="button"
+              aria-label={`Show slide ${i + 1}`}
+              aria-current={i === index}
+              onClick={() => setIndex(i)}
+              className="group flex h-4 items-center py-1"
+            >
+              <span
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === index ? "w-6 bg-gold" : "w-1.5 bg-cream/40 group-hover:bg-cream/60"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

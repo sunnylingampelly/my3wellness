@@ -6,7 +6,7 @@ export function telLink() {
 
 export function whatsappLink(message?: string) {
   const defaultMessage =
-    "Hi Anantara Spa, I'd like to book an appointment.";
+    "Hi MY3 Wellness Spa, I'd like to book an appointment.";
   const text = encodeURIComponent(message ?? defaultMessage);
   return `https://wa.me/${siteConfig.contact.whatsappRaw}?text=${text}`;
 }

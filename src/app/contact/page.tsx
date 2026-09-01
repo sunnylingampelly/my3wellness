@@ -15,7 +15,7 @@ import { mailtoLink } from "@/lib/links";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Visit or contact Anantara Spa in Gachibowli, Hyderabad — address, phone, WhatsApp, opening hours, and directions from HITEC City and the Financial District.",
+    "Visit or contact MY3 Wellness Spa in Gachibowli, Hyderabad — address, phone, WhatsApp, opening hours, and directions from HITEC City and the Financial District.",
   alternates: { canonical: "/contact" },
 };
 
@@ -46,7 +46,7 @@ export default function ContactPage() {
             </Reveal>
             <Reveal delay={0.06}>
               <h2 className="mt-4 font-heading text-3xl sm:text-4xl font-medium text-foreground">
-                Every Way to Reach Anantara
+                Every Way to Reach MY3
               </h2>
             </Reveal>
 
@@ -136,7 +136,7 @@ export default function ContactPage() {
           <Reveal>
             <div className="overflow-hidden rounded-3xl border border-border">
               <iframe
-                title="Anantara Spa on Google Maps"
+                title="MY3 Wellness Spa on Google Maps"
                 src={siteConfig.address.mapsEmbedSrc}
                 width="100%"
                 height="450"

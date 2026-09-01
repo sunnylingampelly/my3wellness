@@ -15,7 +15,7 @@ export function AboutSplit() {
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
             <Image
               src="/images/gallery/gallery-06.png"
-              alt="Therapist performing a deep shoulder massage at Anantara Spa"
+              alt="Therapist performing a deep shoulder massage at MY3 Wellness Spa"
               fill
               sizes="(max-width: 1024px) 90vw, 45vw"
               className="object-cover"

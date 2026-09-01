@@ -15,7 +15,7 @@ export function MembershipCard({ tier }: { tier: MembershipTier }) {
       className={cn(
         "relative flex h-full flex-col gap-6 rounded-3xl p-8 sm:p-9",
         tier.highlight
-          ? "bg-forest text-cream shadow-[0_30px_70px_-30px_rgba(46,94,87,0.5)]"
+          ? "bg-olive text-cream shadow-[0_30px_70px_-30px_rgba(74,86,54,0.5)]"
           : "border border-border bg-card"
       )}
     >

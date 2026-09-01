@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Terms and conditions for booking and visiting Anantara Spa, Gachibowli.",
+  description: "Terms and conditions for booking and visiting MY3 Wellness Spa, Gachibowli.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
 };

@@ -1,60 +1,78 @@
 // Single source of truth for business data, used across pages, metadata, and JSON-LD.
-// Contact details below are pulled from the live site (anantaraspa.org) and public
-// listings. Working hours are not published anywhere we could verify — the value below
-// is a placeholder and should be confirmed by the client before launch.
+//
+// Domain, phone, and email below are MY3's real, confirmed details. The street address,
+// socials, and analytics IDs are still placeholders inherited from an earlier build for
+// a different spa business — replace those with MY3's real details before launch.
 
 export const siteConfig = {
-  name: "Anantara Spa",
-  legalName: "Anantara Spa",
-  tagline: "Sanctuary of Reflection",
+  name: "MY3 Wellness Spa",
+  legalName: "MY3 Wellness Spa",
+  tagline: "Mind. Body. Balance.",
   shortDescription:
     "A luxury day spa in Gachibowli-Raidurg, Hyderabad's IT corridor, offering Swedish, Thai, Balinese and deep-tissue massage for busy professionals.",
-  url: "https://anantaraspa.org",
+  url: "https://my3wellnessspa.in",
   ogImage: "/opengraph-image",
   locale: "en_IN",
-  themeColor: "#2e5e57",
-  gtmId: "GTM-T2S3NPCD",
-  googleAdsId: "AW-18366122950",
-  ga4Id: "G-GYH3TLEKNM",
+  themeColor: "#4a5636",
+  // PLACEHOLDER — replace with MY3's own GTM/GA4/Google Ads container IDs before
+  // launch. Leaving a previous owner's real IDs here would send this site's traffic
+  // into a stranger's analytics account.
+  gtmId: "GTM-XXXXXXX",
+  googleAdsId: "AW-XXXXXXXXXX",
+  ga4Id: "G-XXXXXXXXXX",
 
   contact: {
     phoneDisplay: "+91 99484 81838",
     phoneRaw: "+919948481838",
     whatsappRaw: "919948481838",
-    email: "anantaraspa2025@gmail.com",
+    email: "my3wellnessspa@gmail.com",
   },
 
   address: {
-    streetAddress: "1st Floor, G Square Building, Madhura Nagar Colony",
+    // PLACEHOLDER — confirm the real building/floor details with the client.
+    streetAddress: "MY3 Wellness Spa, Gachibowli",
     addressLocality: "Gachibowli, Raidurg",
     addressRegion: "Telangana",
-    postalCode: "500081",
+    postalCode: "500032",
     addressCountry: "IN",
-    full: "1st Floor, G Square Building, Madhura Nagar Colony, Gachibowli, Raidurg, Hyderabad, Telangana 500081",
-    mapsQuery:
-      "Anantara Spa, G Square Building, Madhura Nagar Colony, Gachibowli, Raidurg, Hyderabad, Telangana 500081",
-    // Real embed pulled from the actual "Anantara spa" Google Maps listing via
-    // Share > Embed a map (the classic /maps/embed?pb=... share link, not the
-    // deprecated keyless output=embed query trick — this one stays free, no API key).
+    full: "Gachibowli, Raidurg, Hyderabad, Telangana 500032",
+    mapsQuery: "MY3 Wellness Spa, Gachibowli, Raidurg, Hyderabad, Telangana",
+    // PLACEHOLDER — no real Google Business listing exists yet for MY3, so this uses
+    // a plain keyless search-embed against the address text above (approximate pin,
+    // no API key required). Swap for a proper Maps "Share > Embed a map" link once
+    // MY3's Google Business Profile is live.
     mapsEmbedSrc:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8188.47714860176!2d78.3798283!3d17.423797200000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9328f75b4e0f%3A0x1ff1f675b128461e!2sAnantara%20spa!5e1!3m2!1sen!2sin!4v1785757494569!5m2!1sen!2sin",
+      "https://maps.google.com/maps?q=MY3+Wellness+Spa+Gachibowli+Raidurg+Hyderabad+Telangana&output=embed",
     mapsDirectionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=Anantara+Spa+G+Square+Building+Madhura+Nagar+Colony+Gachibowli+Raidurg+Hyderabad+Telangana+500081",
+      "https://www.google.com/maps/dir/?api=1&destination=MY3+Wellness+Spa+Gachibowli+Raidurg+Hyderabad+Telangana",
   },
 
   // Placeholder — confirm real hours with the client before launch.
-  hours: [
-    { days: "Monday — Sunday", time: "10:00 AM – 9:00 PM" },
-  ],
+  hours: [{ days: "Monday — Sunday", time: "10:00 AM – 9:00 PM" }],
   hoursNote: "Open all seven days · Last booking 8:00 PM",
 
-  social: {
-    instagram: "https://instagram.com/anantaraspa",
-    facebook: "https://facebook.com/anantaraspa",
+  // Single source of truth for the current promo — change the number here and
+  // it updates everywhere (offer bar, hero badge, service cards, popup).
+  promo: {
+    percent: 20,
+    eyebrow: "First Visit Offer",
+    headline: "Flat 20% Off All Therapies",
+    cardBadge: "Get 20% Off For First-Time Guests",
+    popupHeadline: "Grab 20% Off Your First Visit",
+    popupBody:
+      "Book your first treatment at MY3 Wellness Spa today and save 20% instantly — no advance payment required.",
   },
 
-  founded: 2015,
-  yearsOfExperience: 10,
+  // PLACEHOLDER — handles below are illustrative, not verified to exist. Replace with
+  // MY3's real social profiles before launch.
+  social: {
+    instagram: "https://instagram.com/my3wellnessspa",
+    facebook: "https://facebook.com/my3wellnessspa",
+  },
+
+  // PLACEHOLDER — confirm real founding year with the client.
+  founded: 2024,
+  yearsOfExperience: 1,
 
   nearbyLandmarks: [
     "HITEC City",

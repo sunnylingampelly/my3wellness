@@ -14,9 +14,9 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#1b2b27",
+          backgroundColor: "#20261a",
           backgroundImage:
-            "radial-gradient(circle at 25% 20%, rgba(199,169,107,0.25), transparent 45%), radial-gradient(circle at 80% 85%, rgba(79,122,114,0.35), transparent 50%)",
+            "radial-gradient(circle at 25% 20%, rgba(199,169,107,0.25), transparent 45%), radial-gradient(circle at 80% 85%, rgba(124,133,88,0.35), transparent 50%)",
           position: "relative",
         }}
       >
@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             marginBottom: 18,
           }}
         >
-          Anantara Spa
+          MY3 Wellness Spa
         </div>
         <div
           style={{
@@ -54,12 +54,12 @@ export default function OpengraphImage() {
             padding: "0 60px",
           }}
         >
-          Sanctuary of Reflection
+          Mind. Body. Balance.
         </div>
         <div
           style={{
             fontSize: 26,
-            color: "#c9d6cf",
+            color: "#d9dbc3",
             marginTop: 22,
             letterSpacing: 2,
           }}

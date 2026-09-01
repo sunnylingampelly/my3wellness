@@ -50,7 +50,7 @@ export async function generateMetadata({
     description: service.description,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.name} | Anantara Spa`,
+      title: `${service.name} | MY3 Wellness Spa`,
       description: service.description,
     },
   };
@@ -93,7 +93,40 @@ export default async function ServiceDetailPage({
 
       <section className="bg-background py-24 sm:py-28">
         <div className="container-luxe grid grid-cols-1 gap-14 lg:grid-cols-3 lg:gap-16">
-          <div className="lg:col-span-2">
+          {/* Price + CTA comes first in DOM/mobile order so it's visible without
+              scrolling past the full description on a phone — most ad traffic is
+              mobile, and this is exactly what the landing page needs above the
+              fold. `lg:order-2` restores the original right-column position on
+              desktop, where the persistent header CTA already covers the fold. */}
+          <div className="order-1 lg:order-2 lg:col-span-1">
+            <Reveal delay={0.1}>
+              <div className="rounded-3xl border border-gold/50 bg-card p-7 sm:p-8">
+                <h3 className="font-heading text-xl text-foreground">Duration &amp; Pricing</h3>
+                <ul className="mt-5 flex flex-col gap-2.5">
+                  {service.prices.map((p) => (
+                    <li
+                      key={p.duration}
+                      className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
+                    >
+                      <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
+                      <span className="font-heading text-lg text-foreground">
+                        ₹{p.price.toLocaleString("en-IN")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <WhatsAppLink
+                  message={`Hi, I'd like to book the ${service.name}.`}
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
+                >
+                  <WhatsAppIcon className="size-4" />
+                  Book on WhatsApp
+                </WhatsAppLink>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="order-2 lg:order-1 lg:col-span-2">
             <Reveal>
               <span className="flex size-12 items-center justify-center rounded-full bg-secondary text-primary">
                 <ServiceIcon icon={service.icon} className="size-5" />
@@ -119,34 +152,6 @@ export default async function ServiceDetailPage({
                   </li>
                 ))}
               </ul>
-            </Reveal>
-          </div>
-
-          <div className="lg:col-span-1">
-            <Reveal delay={0.1}>
-              <div className="rounded-3xl border border-gold/50 bg-card p-7 sm:p-8">
-                <h3 className="font-heading text-xl text-foreground">Duration &amp; Pricing</h3>
-                <ul className="mt-5 flex flex-col gap-2.5">
-                  {service.prices.map((p) => (
-                    <li
-                      key={p.duration}
-                      className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
-                    >
-                      <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
-                      <span className="font-heading text-lg text-foreground">
-                        ₹{p.price.toLocaleString("en-IN")}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <WhatsAppLink
-                  message={`Hi, I'd like to book the ${service.name}.`}
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  <WhatsAppIcon className="size-4" />
-                  Book on WhatsApp
-                </WhatsAppLink>
-              </div>
             </Reveal>
           </div>
         </div>

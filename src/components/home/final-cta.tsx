@@ -27,7 +27,7 @@ export function FinalCta() {
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-4 max-w-2xl text-balance font-heading text-4xl sm:text-5xl font-medium text-cream">
-            Your Sanctuary of Reflection Awaits
+            Your Moment of Balance Awaits
           </h2>
         </Reveal>
 
