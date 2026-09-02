@@ -21,7 +21,7 @@ const IMAGES = [
 
 export function SignatureExperiences() {
   return (
-    <section className="bg-background py-24 sm:py-32">
+    <section className="bg-background py-12 sm:py-32">
       <div className="container-luxe">
         <SectionHeading
           eyebrow="Our Full Menu"

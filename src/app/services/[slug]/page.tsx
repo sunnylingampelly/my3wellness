@@ -110,10 +110,10 @@ export default async function ServiceDetailPage({
                     >
                       <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
                       <span className="flex items-baseline gap-2">
-                        <span className="text-sm text-muted-foreground/70 line-through">
+                        <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
                           ₹{strikeThroughPrice(p.price).toLocaleString("en-IN")}
                         </span>
-                        <span className="font-heading text-lg font-semibold text-gold-deep">
+                        <span className="font-accent text-2xl font-bold text-gold-deep">
                           ₹{p.price.toLocaleString("en-IN")}
                         </span>
                       </span>

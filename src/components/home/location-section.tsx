@@ -11,7 +11,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export function LocationSection() {
   return (
-    <section className="bg-background py-24 sm:py-32">
+    <section className="bg-background pt-12 pb-24 sm:py-32">
       <div className="container-luxe">
         <SectionHeading eyebrow="Find Us" title="Our Location in Gachibowli" />
 

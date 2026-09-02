@@ -79,10 +79,10 @@ export function ServiceCard({
             <span className="font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
               From {minDuration} min
             </span>
-            <span className="text-xs text-muted-foreground/70 line-through">
+            <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
               ₹{strikeThroughPrice(price).toLocaleString("en-IN")}
             </span>
-            <span className="font-heading text-base font-semibold text-gold-deep">
+            <span className="font-accent text-xl font-bold text-gold-deep">
               ₹{price.toLocaleString("en-IN")}
             </span>
           </p>

@@ -40,7 +40,7 @@ const FEATURES = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-background py-24 sm:py-32">
+    <section className="bg-background pt-24 pb-12 sm:py-32">
       <div className="container-luxe">
         <SectionHeading
           eyebrow="The MY3 Standard"
@@ -63,7 +63,7 @@ export function WhyChooseUs() {
           ))}
         </RevealGroup>
 
-        <div className="mt-20 flex flex-col items-center gap-6">
+        <div className="mt-20 hidden flex-col items-center gap-6 sm:flex">
           <span className="font-accent text-xs uppercase tracking-[0.24em] text-muted-foreground">
             Moments From Hyderabad&rsquo;s Business Hubs
           </span>
