@@ -9,7 +9,7 @@ import { services } from "@/content/services";
 
 export function AboutSplit() {
   return (
-    <section className="bg-secondary/40 py-24 sm:py-32">
+    <section className="hidden bg-secondary/40 py-24 sm:block sm:py-32">
       <div className="container-luxe grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">

@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { AboutSplit } from "@/components/home/about-split";
 import { SignatureExperiences } from "@/components/home/signature-experiences";
+import { LocationSection } from "@/components/home/location-section";
 import { PricingTeaser } from "@/components/home/pricing-teaser";
 import { SpaJourney } from "@/components/home/spa-journey";
 import { GalleryTeaser } from "@/components/home/gallery-teaser";
@@ -30,6 +31,7 @@ export default function Home() {
       <WhyChooseUs />
       <AboutSplit />
       <SignatureExperiences />
+      <LocationSection />
       <PricingTeaser />
       <SpaJourney />
       <GalleryTeaser />

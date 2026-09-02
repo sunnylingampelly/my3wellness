@@ -12,7 +12,7 @@ import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { services, getServiceBySlug } from "@/content/services";
+import { services, getServiceBySlug, strikeThroughPrice } from "@/content/services";
 
 const IMAGES = [
   "/images/gallery/gallery-01.png",
@@ -109,8 +109,13 @@ export default async function ServiceDetailPage({
                       className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
                     >
                       <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
-                      <span className="font-heading text-lg text-foreground">
-                        ₹{p.price.toLocaleString("en-IN")}
+                      <span className="flex items-baseline gap-2">
+                        <span className="text-sm text-muted-foreground/70 line-through">
+                          ₹{strikeThroughPrice(p.price).toLocaleString("en-IN")}
+                        </span>
+                        <span className="font-heading text-lg font-semibold text-gold-deep">
+                          ₹{p.price.toLocaleString("en-IN")}
+                        </span>
                       </span>
                     </li>
                   ))}

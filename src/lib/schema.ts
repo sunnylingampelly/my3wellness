@@ -26,8 +26,8 @@ export function localBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 17.4237972,
-      longitude: 78.3798283,
+      latitude: siteConfig.address.lat,
+      longitude: siteConfig.address.lng,
     },
     areaServed: siteConfig.nearbyLandmarks.map((name) => ({
       "@type": "Place",

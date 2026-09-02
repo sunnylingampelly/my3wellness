@@ -1,8 +1,8 @@
 // Single source of truth for business data, used across pages, metadata, and JSON-LD.
 //
-// Domain, phone, and email below are MY3's real, confirmed details. The street address,
-// socials, and analytics IDs are still placeholders inherited from an earlier build for
-// a different spa business — replace those with MY3's real details before launch.
+// Domain, phone, email, address, and socials below are MY3's real, confirmed details.
+// Analytics IDs are still placeholders (see the gtmId/googleAdsId/ga4Id comment below) —
+// fill those in once MY3 sets up its own GTM/GA4/Google Ads accounts.
 
 export const siteConfig = {
   name: "MY3 Wellness Spa",
@@ -32,22 +32,29 @@ export const siteConfig = {
   },
 
   address: {
-    // PLACEHOLDER — confirm the real building/floor details with the client.
-    streetAddress: "MY3 Wellness Spa, Gachibowli",
+    // Real, confirmed location.
+    streetAddress: "1st Floor, G Square Building, above HDFC Bank, near Wells Fargo, Madhura Nagar Colony",
     addressLocality: "Gachibowli, Raidurg",
     addressRegion: "Telangana",
-    postalCode: "500032",
+    postalCode: "500081",
     addressCountry: "IN",
-    full: "Gachibowli, Raidurg, Hyderabad, Telangana 500032",
-    mapsQuery: "MY3 Wellness Spa, Gachibowli, Raidurg, Hyderabad, Telangana",
-    // PLACEHOLDER — no real Google Business listing exists yet for MY3, so this uses
-    // a plain keyless search-embed against the address text above (approximate pin,
-    // no API key required). Swap for a proper Maps "Share > Embed a map" link once
-    // MY3's Google Business Profile is live.
-    mapsEmbedSrc:
-      "https://maps.google.com/maps?q=MY3+Wellness+Spa+Gachibowli+Raidurg+Hyderabad+Telangana&output=embed",
-    mapsDirectionsUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=MY3+Wellness+Spa+Gachibowli+Raidurg+Hyderabad+Telangana",
+    full: "1st Floor, G Square Building, Madhura Nagar Colony, Gachibowli, Raidurg, Hyderabad, Telangana 500081",
+    mapsQuery: "MY3 Wellness Spa, Gachibowli, Raidurg, Hyderabad, Telangana 500081",
+    // Exact real coordinates for the address above.
+    lat: 17.4237972,
+    lng: 78.3798283,
+    // Deliberately a plain lat/lng pin embed rather than a place-ID/business-name
+    // search — this building's Google Maps place ID is still registered under a
+    // previous, unrelated tenant's business name. A place/name-based embed would
+    // pull *their* live listing info (name, rating, reviews) into the card, not
+    // MY3's. A coordinate pin sidesteps that entirely: it marks the exact real
+    // spot without asserting whose listing lives there. The homepage/contact
+    // location cards render MY3's own name/hours/address from this file, not
+    // from Google — so nothing here can show the wrong business name. Swap this
+    // for a real "Share > Embed a map" link once MY3 has its own Google Business
+    // Profile claimed at this address.
+    mapsEmbedSrc: "https://maps.google.com/maps?q=17.4237972,78.3798283&z=17&output=embed",
+    mapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.4237972,78.3798283",
   },
 
   // Placeholder — confirm real hours with the client before launch.

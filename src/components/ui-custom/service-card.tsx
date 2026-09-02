@@ -6,7 +6,7 @@ import { ArrowUpRight, Gift } from "lucide-react";
 import { motion } from "framer-motion";
 
 import type { Service } from "@/content/services";
-import { startingPrice } from "@/content/services";
+import { startingPrice, strikeThroughPrice } from "@/content/services";
 import { ServiceIcon } from "@/components/ui-custom/service-icon";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
@@ -75,8 +75,16 @@ export function ServiceCard({
               strokeWidth={1.5}
             />
           </div>
-          <p className="mt-1.5 font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
-            From {minDuration} min &middot; ₹{price.toLocaleString("en-IN")}
+          <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+            <span className="font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
+              From {minDuration} min
+            </span>
+            <span className="text-xs text-muted-foreground/70 line-through">
+              ₹{strikeThroughPrice(price).toLocaleString("en-IN")}
+            </span>
+            <span className="font-heading text-base font-semibold text-gold-deep">
+              ₹{price.toLocaleString("en-IN")}
+            </span>
           </p>
         </div>
 

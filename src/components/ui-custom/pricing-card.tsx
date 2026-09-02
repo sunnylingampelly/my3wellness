@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import type { Service } from "@/content/services";
+import { strikeThroughPrice } from "@/content/services";
 import { ServiceIcon } from "@/components/ui-custom/service-icon";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { cn } from "@/lib/utils";
@@ -41,8 +42,13 @@ export function PricingCard({ service }: { service: Service }) {
             className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
           >
             <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
-            <span className="font-heading text-lg text-foreground">
-              ₹{p.price.toLocaleString("en-IN")}
+            <span className="flex items-baseline gap-2">
+              <span className="text-sm text-muted-foreground/70 line-through">
+                ₹{strikeThroughPrice(p.price).toLocaleString("en-IN")}
+              </span>
+              <span className="font-heading text-lg font-semibold text-gold-deep">
+                ₹{p.price.toLocaleString("en-IN")}
+              </span>
             </span>
           </li>
         ))}

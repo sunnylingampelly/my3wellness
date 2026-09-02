@@ -48,9 +48,12 @@ export function WhyChooseUs() {
           description="Gachibowli has no shortage of massage centres. Here's what genuinely sets a five-star wellness sanctuary apart."
         />
 
-        <RevealGroup className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
+        <RevealGroup
+          className="mt-16 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
+          stagger={0.08}
+        >
           {FEATURES.map((f) => (
-            <RevealItem key={f.title}>
+            <RevealItem key={f.title} className="w-[85vw] shrink-0 snap-center sm:w-auto">
               <FeatureCard
                 icon={<f.icon className="size-5" strokeWidth={1.5} />}
                 title={f.title}
