@@ -231,14 +231,15 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-4 flex w-full flex-col items-center gap-4 sm:mt-8 sm:w-auto sm:flex-row sm:gap-6"
         >
-          <WhatsAppLink className="btn-glow-border inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-white shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
-            <WhatsAppIcon className="size-4" />
-            Book Appointment
-          </WhatsAppLink>
-          <CallLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full border border-cream/40 px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
+          {/* Call is the priority CTA — primary fill + the glow treatment. */}
+          <CallLink className="btn-glow-border inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 font-accent text-xs uppercase tracking-[0.1em] text-ink shadow-lg shadow-gold/30 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
             <Phone className="size-4" strokeWidth={1.75} />
-            Call Now
+            {siteConfig.cta.call}
           </CallLink>
+          <WhatsAppLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full border border-cream/40 px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
+            <WhatsAppIcon className="size-4" />
+            {siteConfig.cta.whatsapp}
+          </WhatsAppLink>
         </motion.div>
 
         <div className="mt-5 hidden items-center gap-2 sm:mt-6 sm:flex">

@@ -91,21 +91,21 @@ export function DiscountPopup() {
             </SheetDescription>
 
             <div className="mt-1 flex w-full flex-col gap-2.5">
+              <CallLink
+                onClick={() => setOpen(false)}
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform active:scale-95"
+              >
+                <Phone className="size-4" strokeWidth={1.75} />
+                {siteConfig.cta.call}
+              </CallLink>
               <WhatsAppLink
                 message={claimMessage}
                 onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] transition-transform active:scale-95"
-              >
-                <WhatsAppIcon className="size-4" />
-                Claim on WhatsApp
-              </WhatsAppLink>
-              <CallLink
-                onClick={() => setOpen(false)}
                 className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-colors active:scale-95"
               >
-                <Phone className="size-4" strokeWidth={1.75} />
-                {siteConfig.contact.phoneDisplay}
-              </CallLink>
+                <WhatsAppIcon className="size-4" />
+                {siteConfig.cta.whatsapp}
+              </WhatsAppLink>
             </div>
             <p className="text-[11px] text-muted-foreground">No advance payment required</p>
           </div>
@@ -143,21 +143,21 @@ export function DiscountPopup() {
           </DialogDescription>
 
           <div className="mt-1 flex w-full flex-col gap-2.5">
+            <CallLink
+              onClick={() => setOpen(false)}
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform hover:scale-[1.02] active:scale-95"
+            >
+              <Phone className="size-4" strokeWidth={1.75} />
+              {siteConfig.cta.call}
+            </CallLink>
             <WhatsAppLink
               message={claimMessage}
               onClick={() => setOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(37,211,102,0.35)] transition-transform hover:scale-[1.02] active:scale-95"
-            >
-              <WhatsAppIcon className="size-4" />
-              Claim on WhatsApp
-            </WhatsAppLink>
-            <CallLink
-              onClick={() => setOpen(false)}
               className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
-              <Phone className="size-4" strokeWidth={1.75} />
-              {siteConfig.contact.phoneDisplay}
-            </CallLink>
+              <WhatsAppIcon className="size-4" />
+              {siteConfig.cta.whatsapp}
+            </WhatsAppLink>
           </div>
           <p className="text-[11px] text-muted-foreground">No advance payment required</p>
         </div>

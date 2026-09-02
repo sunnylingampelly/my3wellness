@@ -8,6 +8,7 @@ import { CallLink } from "@/components/ui-custom/call-link";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { DirectionsLink } from "@/components/ui-custom/directions-link";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
+import { siteConfig } from "@/lib/site-config";
 
 export function MobileCtaBar() {
   const [visible, setVisible] = useState(false);
@@ -48,6 +49,8 @@ export function MobileCtaBar() {
           className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
         >
+          {/* Call is the priority action — the big pill. WhatsApp and Directions
+              are secondary, icon-only, with WhatsApp in the middle. */}
           <div className="glass mx-3 mb-3 flex items-center gap-2 rounded-full p-2 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
             <DirectionsLink
               aria-label="Get directions to MY3 Wellness Spa"
@@ -55,18 +58,18 @@ export function MobileCtaBar() {
             >
               <Navigation className="size-5" strokeWidth={1.5} />
             </DirectionsLink>
-            <CallLink
-              aria-label="Call MY3 Wellness Spa"
-              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-secondary text-primary transition-transform active:scale-90"
+            {/* True WhatsApp brand green — recognizable at a glance, kept
+                distinct from the site's gold/olive theme. */}
+            <WhatsAppLink
+              aria-label="Chat with MY3 Wellness Spa on WhatsApp"
+              className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_rgba(37,211,102,0.35)] transition-transform active:scale-90"
             >
-              <Phone className="size-5" strokeWidth={1.5} />
-            </CallLink>
-            {/* True WhatsApp brand green — this is the "WhatsApp button" people
-                recognize at a glance, kept distinct from the site's teal/gold theme. */}
-            <WhatsAppLink className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3 font-accent text-xs uppercase tracking-[0.14em] text-white shadow-[0_4px_14px_rgba(37,211,102,0.35)] transition-transform active:scale-95">
-              <WhatsAppIcon className="size-4" />
-              WhatsApp
+              <WhatsAppIcon className="size-5" />
             </WhatsAppLink>
+            <CallLink className="btn-glow-border flex flex-1 items-center justify-center gap-1.5 rounded-full bg-gold py-3 font-accent text-[11px] font-semibold uppercase leading-[1.15] tracking-[0.02em] text-ink shadow-[0_4px_14px_rgba(199,169,107,0.4)] transition-transform active:scale-95">
+              <Phone className="size-4 shrink-0" strokeWidth={1.75} />
+              <span className="text-center">{siteConfig.cta.call}</span>
+            </CallLink>
           </div>
         </motion.div>
       )}

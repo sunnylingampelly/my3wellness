@@ -73,6 +73,14 @@ export const siteConfig = {
       "Book your first treatment at MY3 Wellness Spa today and save 20% instantly — no advance payment required.",
   },
 
+  // Standard labels for the site's two primary CTAs, kept to just these two
+  // everywhere a call/WhatsApp button pair appears (hero, final CTA, discount
+  // popup, sticky mobile bar) — call is the priority action, WhatsApp second.
+  cta: {
+    call: "Book Free 30-Min Session",
+    whatsapp: "Get 20% Off",
+  },
+
   social: {
     instagram: "https://www.instagram.com/my3wellnessspa/",
     facebook: "https://www.facebook.com/profile.php?id=61594087136309",
