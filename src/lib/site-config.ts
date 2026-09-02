@@ -72,8 +72,8 @@ export const siteConfig = {
   },
 
   // PLACEHOLDER — confirm real founding year with the client.
-  founded: 2024,
-  yearsOfExperience: 1,
+  founded: 2020,
+  yearsOfExperience: 5,
 
   nearbyLandmarks: [
     "HITEC City",
