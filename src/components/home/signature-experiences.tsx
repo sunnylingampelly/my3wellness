@@ -35,7 +35,11 @@ export function SignatureExperiences() {
         >
           {services.map((service, i) => (
             <RevealItem key={service.slug}>
-              <ServiceCard service={service} image={IMAGES[i % IMAGES.length]} />
+              <ServiceCard
+                service={service}
+                image={IMAGES[i % IMAGES.length]}
+                priceDisplay="none"
+              />
             </RevealItem>
           ))}
         </RevealGroup>

@@ -17,10 +17,17 @@ export function ServiceCard({
   service,
   image,
   className,
+  priceDisplay = "detailed",
 }: {
   service: Service;
   image: string;
   className?: string;
+  /** "detailed" (default) shows this service's real duration + struck-through
+   * / offer price — used on /services and the pricing-adjacent pages. "none"
+   * omits pricing entirely — used on the homepage grid, which is meant to
+   * hook interest rather than quote numbers (those live on /services and
+   * /pricing). */
+  priceDisplay?: "detailed" | "none";
 }) {
   const price = startingPrice(service);
   const minDuration = Math.min(...service.prices.map((p) => p.duration));
@@ -75,17 +82,19 @@ export function ServiceCard({
               strokeWidth={1.5}
             />
           </div>
-          <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-            <span className="font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
-              From {minDuration} min
-            </span>
-            <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
-              ₹{strikeThroughPrice(price).toLocaleString("en-IN")}
-            </span>
-            <span className="font-accent text-xl font-bold text-gold-deep">
-              ₹{price.toLocaleString("en-IN")}
-            </span>
-          </p>
+          {priceDisplay === "detailed" && (
+            <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              <span className="font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
+                From {minDuration} min
+              </span>
+              <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
+                ₹{strikeThroughPrice(price).toLocaleString("en-IN")}
+              </span>
+              <span className="font-accent text-xl font-bold text-gold-deep">
+                ₹{price.toLocaleString("en-IN")}
+              </span>
+            </p>
+          )}
         </div>
 
         <p className="text-sm leading-relaxed text-muted-foreground line-clamp-3">
