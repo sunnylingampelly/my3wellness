@@ -3,7 +3,7 @@ import Script from "next/script";
 import { Playfair_Display, Work_Sans, Jost } from "next/font/google";
 
 import "./globals.css";
-import { siteConfig } from "@/lib/site-config";
+import { siteConfig, hasRealAnalyticsId } from "@/lib/site-config";
 import { localBusinessSchema, organizationSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ThemeProvider } from "@/components/providers/theme-provider";
@@ -124,34 +124,47 @@ export default function RootLayout({
       className={`${playfairDisplay.variable} ${workSans.variable} ${jost.variable} h-full antialiased`}
     >
       <head>
-        <Script id="gtm-init" strategy="beforeInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','${siteConfig.gtmId}');`}
-        </Script>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${siteConfig.googleAdsId}');
-          gtag('config', '${siteConfig.ga4Id}');`}
-        </Script>
+        {/* These IDs are still placeholders (see siteConfig comments) — loading
+            GTM/gtag against a fake ID doesn't just do nothing, it actively
+            fires real network requests to Google's ad servers on every
+            pageview (and costs ~150KB of JS) for an account that doesn't
+            exist. Skip them entirely until real IDs are filled in. */}
+        {hasRealAnalyticsId(siteConfig.gtmId) && (
+          <Script id="gtm-init" strategy="beforeInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${siteConfig.gtmId}');`}
+          </Script>
+        )}
+        {hasRealAnalyticsId(siteConfig.googleAdsId) && (
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
+            strategy="afterInteractive"
+          />
+        )}
+        {(hasRealAnalyticsId(siteConfig.googleAdsId) || hasRealAnalyticsId(siteConfig.ga4Id)) && (
+          <Script id="gtag-init" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            ${hasRealAnalyticsId(siteConfig.googleAdsId) ? `gtag('config', '${siteConfig.googleAdsId}');` : ""}
+            ${hasRealAnalyticsId(siteConfig.ga4Id) ? `gtag('config', '${siteConfig.ga4Id}');` : ""}`}
+          </Script>
+        )}
       </head>
       <body className="min-h-full flex flex-col">
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.gtmId}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+        {hasRealAnalyticsId(siteConfig.gtmId) && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${siteConfig.gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
         <JsonLd data={[localBusinessSchema(), organizationSchema()]} />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <TooltipProvider delay={150}>

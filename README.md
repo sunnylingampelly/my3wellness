@@ -44,9 +44,9 @@ be replaced with MY3's actual details before going live:
 
 - **Street address** (`siteConfig.address` in `src/lib/site-config.ts`) — phone and email are MY3's real, confirmed details; the exact building/floor is still a placeholder. Confirm before launch.
 - **Domain** (`siteConfig.url`) — set to `https://my3wellnessspa.in`, MY3's real domain.
-- **Analytics IDs** (`siteConfig.gtmId` / `googleAdsId` / `ga4Id`) — placeholder `GTM-XXXXXXX` / `AW-XXXXXXXXXX` / `G-XXXXXXXXXX`. Fill in MY3's own containers — do not reuse a previous owner's IDs.
+- **Analytics IDs** (`siteConfig.gtmId` / `googleAdsId` / `ga4Id`) — MY3 is a new business with no GTM/GA4/Google Ads accounts yet, so these stay as placeholders. `layout.tsx` skips loading GTM/gtag entirely while they're placeholder (see `hasRealAnalyticsId` in `site-config.ts`), so nothing loads and nothing fires until real containers exist. Fill these in once MY3 sets up its own accounts — never reuse a previous owner's IDs.
 - **Google Maps embed** (`siteConfig.address.mapsEmbedSrc`) — uses a keyless address-search embed until MY3 has a real Google Business Profile to pull a proper "Share > Embed a map" link from.
-- **Social handles** (`siteConfig.social`) — illustrative, not verified to exist. Replace with MY3's real profiles.
+- **Social handles** (`siteConfig.social`) — real: [Instagram](https://www.instagram.com/my3wellnessspa/), [Facebook](https://www.facebook.com/profile.php?id=61594087136309).
 - **Business hours** (`siteConfig.hours`) — placeholder (10 AM–9 PM daily). Confirm and update.
 - **Testimonials** (`src/content/testimonials.ts`) — illustrative placeholders, not real guest quotes. Replace with verified reviews before launch.
 - **Membership tiers & pricing** (`src/content/membership.ts`) — proposed program per the original site brief; review pricing/benefits before launch.

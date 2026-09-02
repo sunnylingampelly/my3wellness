@@ -14,9 +14,12 @@ export const siteConfig = {
   ogImage: "/opengraph-image",
   locale: "en_IN",
   themeColor: "#4a5636",
-  // PLACEHOLDER — replace with MY3's own GTM/GA4/Google Ads container IDs before
-  // launch. Leaving a previous owner's real IDs here would send this site's traffic
-  // into a stranger's analytics account.
+  // MY3 is a new business with no GTM/GA4/Google Ads accounts yet — these stay
+  // as placeholders until real containers exist. layout.tsx uses
+  // hasRealAnalyticsId() below to skip loading GTM/gtag entirely while they're
+  // placeholders, so nothing loads, nothing fires, and no bytes are spent on
+  // this until there's a real account to point at. Fill these in once MY3
+  // sets up its own GTM/GA4/Google Ads accounts.
   gtmId: "GTM-XXXXXXX",
   googleAdsId: "AW-XXXXXXXXXX",
   ga4Id: "G-XXXXXXXXXX",
@@ -63,11 +66,9 @@ export const siteConfig = {
       "Book your first treatment at MY3 Wellness Spa today and save 20% instantly — no advance payment required.",
   },
 
-  // PLACEHOLDER — handles below are illustrative, not verified to exist. Replace with
-  // MY3's real social profiles before launch.
   social: {
-    instagram: "https://instagram.com/my3wellnessspa",
-    facebook: "https://facebook.com/my3wellnessspa",
+    instagram: "https://www.instagram.com/my3wellnessspa/",
+    facebook: "https://www.facebook.com/profile.php?id=61594087136309",
   },
 
   // PLACEHOLDER — confirm real founding year with the client.
@@ -112,3 +113,10 @@ export const FOOTER_LINKS = {
     { label: "Terms & Conditions", href: "/terms" },
   ],
 } as const;
+
+// True once an analytics ID has been filled in with a real value (i.e. no
+// longer contains the "X" placeholder run) — see the gtmId/googleAdsId/ga4Id
+// comment above.
+export function hasRealAnalyticsId(id: string) {
+  return id.length > 0 && !id.includes("XXX");
+}
