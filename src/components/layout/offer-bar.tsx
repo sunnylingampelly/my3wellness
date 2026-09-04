@@ -14,6 +14,8 @@ function OfferMessage() {
       Welcome to MY3 Wellness Spa
       <span className="text-gold">·</span>
       <strong className="font-semibold text-gold">{siteConfig.promo.headline}</strong>
+      <span className="text-gold">·</span>
+      <strong className="font-semibold text-gold">{siteConfig.cta.call}</strong>
     </span>
   );
 }

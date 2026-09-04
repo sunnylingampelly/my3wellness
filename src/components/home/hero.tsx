@@ -226,6 +226,20 @@ export function Hero() {
         </div>
 
         <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.42 }}
+          className="mt-4 max-w-md sm:mt-6"
+        >
+          <h2 className="font-heading text-lg font-medium text-cream sm:text-xl">
+            {siteConfig.cta.call}
+          </h2>
+          <p className="mt-1 text-balance text-xs text-cream/70 sm:text-sm">
+            Reserve a complimentary 30-minute consultation and let our therapists design the right treatment for you — no obligation, no advance payment.
+          </p>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
