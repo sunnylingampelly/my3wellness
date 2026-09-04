@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+import { hasRealAnalyticsId } from "@/lib/site-config";
+
 declare global {
   interface Window {
     // dataLayer holds both named custom events (trackEvent) and raw
@@ -28,7 +30,6 @@ const CALL_CONVERSION_LABEL = "AW-XXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXX";
  */
 export function reportCallConversion(url: string) {
   if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer || [];
 
   let navigated = false;
   const navigate = () => {
@@ -36,6 +37,18 @@ export function reportCallConversion(url: string) {
     navigated = true;
     window.location.href = url;
   };
+
+  // CALL_CONVERSION_LABEL is still a placeholder — skip the beacon entirely
+  // (same reasoning as hasRealAnalyticsId in site-config.ts): sending
+  // send_to: "AW-XXXXXXXXXX/..." is a real network request gtag.js can't
+  // resolve to any account, so it's pure noise. Always still navigate the
+  // caller — a missing conversion label must never block the actual call.
+  if (!hasRealAnalyticsId(CALL_CONVERSION_LABEL)) {
+    navigate();
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
 
   // Queue the conversion the same way gtag()'s own shim does, so the hit
   // survives even if gtag.js hasn't finished loading yet (or never does,
@@ -70,6 +83,8 @@ const WHATSAPP_CONVERSION_LABEL = "AW-XXXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXX";
  */
 export function reportWhatsAppConversion() {
   if (typeof window === "undefined") return;
+  // See the matching check in reportCallConversion above.
+  if (!hasRealAnalyticsId(WHATSAPP_CONVERSION_LABEL)) return;
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push([
     "event",

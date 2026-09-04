@@ -138,6 +138,12 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','${siteConfig.gtmId}');`}
           </Script>
         )}
+        {/* Loaded alongside GTM on purpose, not redundant with it: analytics.ts's
+            reportCallConversion/reportWhatsAppConversion push gtag.js-format
+            `send_to: "AW-.../label"` conversion events onto dataLayer, which only
+            gtag.js's own runtime (loaded here) knows how to interpret — GTM's tag
+            engine doesn't process that shape. Removing this script would make
+            those conversions silently stop reporting. */}
         {(hasRealAnalyticsId(siteConfig.googleAdsId) || hasRealAnalyticsId(siteConfig.ga4Id)) && (
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${

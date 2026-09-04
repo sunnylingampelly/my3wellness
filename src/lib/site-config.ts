@@ -1,8 +1,7 @@
 // Single source of truth for business data, used across pages, metadata, and JSON-LD.
 //
 // Domain, phone, email, address, and socials below are MY3's real, confirmed details.
-// Analytics IDs are still placeholders (see the gtmId/googleAdsId/ga4Id comment below) —
-// fill those in once MY3 sets up its own GTM/GA4/Google Ads accounts.
+// gtmId/googleAdsId/ga4Id are MY3's real GTM/Google Ads/GA4 container IDs.
 
 export const siteConfig = {
   name: "MY3 Wellness Spa",
@@ -14,14 +13,8 @@ export const siteConfig = {
   ogImage: "/opengraph-image",
   locale: "en_IN",
   themeColor: "#4a5636",
-  // MY3 is a new business with no GTM/GA4/Google Ads accounts yet — these stay
-  // as placeholders until real containers exist. layout.tsx uses
-  // hasRealAnalyticsId() below to skip loading GTM/gtag entirely while they're
-  // placeholders, so nothing loads, nothing fires, and no bytes are spent on
-  // this until there's a real account to point at. Fill these in once MY3
-  // sets up its own GTM/GA4/Google Ads accounts.
-  gtmId: "GTM-XXXXXXX",
-  googleAdsId: "AW-XXXXXXXXXX",
+  gtmId: "GTM-N6JLKDG2",
+  googleAdsId: "AW-18419941272",
   ga4Id: "G-VVRGHV21Q4",
 
   contact: {
