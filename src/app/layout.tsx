@@ -138,9 +138,11 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','${siteConfig.gtmId}');`}
           </Script>
         )}
-        {hasRealAnalyticsId(siteConfig.googleAdsId) && (
+        {(hasRealAnalyticsId(siteConfig.googleAdsId) || hasRealAnalyticsId(siteConfig.ga4Id)) && (
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${
+              hasRealAnalyticsId(siteConfig.googleAdsId) ? siteConfig.googleAdsId : siteConfig.ga4Id
+            }`}
             strategy="afterInteractive"
           />
         )}

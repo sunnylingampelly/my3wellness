@@ -22,7 +22,7 @@ export const siteConfig = {
   // sets up its own GTM/GA4/Google Ads accounts.
   gtmId: "GTM-XXXXXXX",
   googleAdsId: "AW-XXXXXXXXXX",
-  ga4Id: "G-XXXXXXXXXX",
+  ga4Id: "G-VVRGHV21Q4",
 
   contact: {
     phoneDisplay: "+91 99484 81838",
