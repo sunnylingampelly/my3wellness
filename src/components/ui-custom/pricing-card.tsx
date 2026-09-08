@@ -4,7 +4,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import type { Service } from "@/content/services";
-import { strikeThroughPrice } from "@/content/services";
 import { ServiceIcon } from "@/components/ui-custom/service-icon";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { cn } from "@/lib/utils";
@@ -35,31 +34,23 @@ export function PricingCard({ service }: { service: Service }) {
         </div>
       </div>
 
-      <ul className="flex flex-col gap-2.5">
+      <ul className="flex flex-wrap gap-2">
         {service.prices.map((p) => (
           <li
             key={p.duration}
-            className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
+            className="rounded-full bg-secondary px-3.5 py-1.5 font-accent text-xs text-foreground/80"
           >
-            <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
-            <span className="flex items-baseline gap-2">
-              <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
-                ₹{strikeThroughPrice(p.price).toLocaleString("en-IN")}
-              </span>
-              <span className="font-accent text-2xl font-bold text-gold-deep">
-                ₹{p.price.toLocaleString("en-IN")}
-              </span>
-            </span>
+            {p.duration} min
           </li>
         ))}
       </ul>
 
       <div className="mt-auto flex flex-col gap-2 pt-2">
         <WhatsAppLink
-          message={`Hi, I'd like to book the ${service.name}.`}
+          message={`Hi, I'd like to check pricing for the ${service.name}.`}
           className="inline-flex items-center justify-center rounded-full bg-primary py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
         >
-          Book Now
+          Ask for Pricing
         </WhatsAppLink>
         <Link
           href={`/services/${service.slug}`}

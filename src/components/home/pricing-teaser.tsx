@@ -17,7 +17,7 @@ export function PricingTeaser() {
         <SectionHeading
           eyebrow="Transparent Pricing"
           title="Investment in Your Wellbeing"
-          description="No hidden add-ons, no vague estimates — every duration and price, published openly."
+          description="No hidden add-ons, no vague estimates — every duration, clearly laid out."
         />
 
         <RevealGroup className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3" stagger={0.1}>
@@ -36,7 +36,7 @@ export function PricingTeaser() {
             href="/pricing"
             className="inline-flex items-center gap-2 rounded-full border border-primary px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            View Full Price List
+            View All Treatments
             <ArrowRight className="size-4" strokeWidth={1.5} />
           </Link>
         </div>

@@ -12,7 +12,7 @@ import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { services, getServiceBySlug, strikeThroughPrice } from "@/content/services";
+import { services, getServiceBySlug } from "@/content/services";
 
 const IMAGES = [
   "/images/gallery/gallery-01.png",
@@ -93,7 +93,7 @@ export default async function ServiceDetailPage({
 
       <section className="bg-background py-24 sm:py-28">
         <div className="container-luxe grid grid-cols-1 gap-14 lg:grid-cols-3 lg:gap-16">
-          {/* Price + CTA comes first in DOM/mobile order so it's visible without
+          {/* Duration + CTA comes first in DOM/mobile order so it's visible without
               scrolling past the full description on a phone — most ad traffic is
               mobile, and this is exactly what the landing page needs above the
               fold. `lg:order-2` restores the original right-column position on
@@ -101,31 +101,26 @@ export default async function ServiceDetailPage({
           <div className="order-1 lg:order-2 lg:col-span-1">
             <Reveal delay={0.1}>
               <div className="rounded-3xl border border-gold/50 bg-card p-7 sm:p-8">
-                <h3 className="font-heading text-xl text-foreground">Duration &amp; Pricing</h3>
-                <ul className="mt-5 flex flex-col gap-2.5">
+                <h3 className="font-heading text-xl text-foreground">Session Lengths</h3>
+                <ul className="mt-5 flex flex-wrap gap-2">
                   {service.prices.map((p) => (
                     <li
                       key={p.duration}
-                      className="flex items-baseline justify-between border-b border-dashed border-border/80 pb-2.5 last:border-0 last:pb-0"
+                      className="rounded-full bg-secondary px-4 py-2 font-accent text-sm text-foreground/85"
                     >
-                      <span className="font-accent text-sm text-muted-foreground">{p.duration} min</span>
-                      <span className="flex items-baseline gap-2">
-                        <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
-                          ₹{strikeThroughPrice(p.price).toLocaleString("en-IN")}
-                        </span>
-                        <span className="font-accent text-2xl font-bold text-gold-deep">
-                          ₹{p.price.toLocaleString("en-IN")}
-                        </span>
-                      </span>
+                      {p.duration} min
                     </li>
                   ))}
                 </ul>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Call or message us on WhatsApp for current rates.
+                </p>
                 <WhatsAppLink
-                  message={`Hi, I'd like to book the ${service.name}.`}
+                  message={`Hi, I'd like to check pricing for the ${service.name}.`}
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3.5 font-accent text-xs uppercase tracking-[0.14em] text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   <WhatsAppIcon className="size-4" />
-                  Book on WhatsApp
+                  Ask for Pricing
                 </WhatsAppLink>
               </div>
             </Reveal>

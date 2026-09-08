@@ -28,8 +28,8 @@ export default function PricingPage() {
       />
       <PageHero
         eyebrow="Transparent Pricing"
-        title="Every Price, Published Openly"
-        description="No hidden add-ons, no vague estimates. Choose your duration, choose your therapy — and book with confidence."
+        title="Every Treatment, Every Duration"
+        description="No hidden add-ons, no vague estimates. Choose your duration, choose your therapy — call or message us and we'll confirm today's rate."
         image="/images/gallery/gallery-05.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "Pricing" }]}
       />

@@ -15,7 +15,8 @@ const SEEN_KEY = "my3-chat-bubble-seen";
 // once per session a couple seconds after landing, then collapses to a small
 // avatar that reopens the card on click. Sits higher up on mobile/tablet
 // (bottom-24) to clear MobileCtaBar's glass pill docked along the very
-// bottom edge; desktop has no such bar, so it can sit lower (bottom-8).
+// bottom edge; desktop's FloatingCta pill is bottom-right only, so it can
+// sit lower (bottom-8) without the two ever touching.
 export function ChatBubble() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);

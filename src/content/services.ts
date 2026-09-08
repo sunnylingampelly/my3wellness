@@ -1,5 +1,3 @@
-import { siteConfig } from "@/lib/site-config";
-
 export type PriceOption = {
   duration: number; // minutes
   price: number; // INR
@@ -367,15 +365,4 @@ export const combinationServices = services.filter((s) => s.category === "combin
 
 export function getServiceBySlug(slug: string) {
   return services.find((s) => s.slug === slug);
-}
-
-export function startingPrice(service: Service) {
-  return Math.min(...service.prices.map((p) => p.price));
-}
-
-// The prices in `services` above are what guests actually pay. For the
-// struck-through "was" price shown alongside them, we mark up by the current
-// promo percentage — i.e. the listed price already *is* the discounted one.
-export function strikeThroughPrice(price: number) {
-  return Math.round(price * (1 + siteConfig.promo.percent / 100));
 }

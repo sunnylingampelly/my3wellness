@@ -23,12 +23,12 @@ import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
 import { siteConfig } from "@/lib/site-config";
 
 const SEEN_KEY = "my3-discount-popup-seen";
-const DELAY_DESKTOP_MS = 5000;
-const DELAY_MOBILE_MS = 8000;
+const DELAY_MS = 10000;
 
-// Once-per-session "grab the offer" prompt, homepage only. Desktop gets the
-// centered image-banner dialog; mobile gets a compact bottom sheet instead —
-// a full centered modal reads as blocking the whole screen on a small phone.
+// Once-per-session "grab the offer" prompt, homepage only, surfacing 10s
+// after landing. Desktop gets the centered image-banner dialog; mobile gets
+// a compact bottom sheet instead — a full centered modal reads as blocking
+// the whole screen on a small phone.
 export function DiscountPopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -43,7 +43,8 @@ export function DiscountPopup() {
   }, []);
 
   useEffect(() => {
-    // Wait until we know which breakpoint we're on so the right delay applies.
+    // Wait until we know which breakpoint we're on so the Sheet/Dialog choice
+    // below doesn't flash the wrong variant when it opens.
     if (pathname !== "/" || isMobile === null) return;
 
     let alreadySeen = false;
@@ -54,17 +55,14 @@ export function DiscountPopup() {
     }
     if (alreadySeen) return;
 
-    const timer = window.setTimeout(
-      () => {
-        setOpen(true);
-        try {
-          sessionStorage.setItem(SEEN_KEY, "1");
-        } catch {
-          // ignore — worst case it reappears next visit
-        }
-      },
-      isMobile ? DELAY_MOBILE_MS : DELAY_DESKTOP_MS
-    );
+    const timer = window.setTimeout(() => {
+      setOpen(true);
+      try {
+        sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {
+        // ignore — worst case it reappears next visit
+      }
+    }, DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [pathname, isMobile]);
 
@@ -80,8 +78,9 @@ export function DiscountPopup() {
         >
           <div className="mx-auto h-1 w-10 shrink-0 rounded-full bg-border" aria-hidden="true" />
           <div className="mt-3 flex flex-col items-center gap-3 text-center">
-            <span className="flex size-11 items-center justify-center rounded-full bg-secondary">
-              <Gift className="size-5 text-gold-deep" strokeWidth={1.75} />
+            <span className="relative flex size-11 items-center justify-center rounded-full bg-secondary">
+              <span className="absolute inset-0 animate-ping rounded-full bg-gold/30" />
+              <Gift className="relative size-5 text-gold-deep" strokeWidth={1.75} />
             </span>
             <SheetTitle className="font-heading text-xl font-semibold text-foreground">
               {siteConfig.promo.popupHeadline}
@@ -93,7 +92,7 @@ export function DiscountPopup() {
             <div className="mt-1 flex w-full flex-col gap-2.5">
               <CallLink
                 onClick={() => setOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform active:scale-95"
+                className="btn-glow-border flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform active:scale-95"
               >
                 <Phone className="size-4" strokeWidth={1.75} />
                 {siteConfig.cta.call}
@@ -134,7 +133,15 @@ export function DiscountPopup() {
           </span>
         </div>
 
-        <div className="flex flex-col items-center gap-4 px-6 pb-7 pt-6 text-center sm:px-8">
+        <div className="relative flex flex-col items-center gap-4 px-6 pb-7 pt-6 text-center sm:px-8">
+          {/* Badge straddles the image/content seam — the same "someone's
+              waving from behind the banner" touch as the mobile sheet's
+              Gift icon, so both variants share one visual signature. */}
+          <span className="relative -mt-11 flex size-14 items-center justify-center rounded-full bg-card shadow-lg ring-4 ring-card">
+            <span className="absolute inset-0 animate-ping rounded-full bg-gold/30" />
+            <Gift className="relative size-6 text-gold-deep" strokeWidth={1.75} />
+          </span>
+
           <DialogTitle className="font-heading text-2xl font-semibold text-foreground sm:text-3xl">
             {siteConfig.promo.popupHeadline}
           </DialogTitle>
@@ -145,7 +152,7 @@ export function DiscountPopup() {
           <div className="mt-1 flex w-full flex-col gap-2.5">
             <CallLink
               onClick={() => setOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform hover:scale-[1.02] active:scale-95"
+              className="btn-glow-border flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3.5 font-accent text-xs font-semibold uppercase tracking-[0.1em] text-ink shadow-[0_8px_24px_rgba(199,169,107,0.4)] transition-transform hover:scale-[1.02] active:scale-95"
             >
               <Phone className="size-4" strokeWidth={1.75} />
               {siteConfig.cta.call}

@@ -102,7 +102,6 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
 }
 
 export function serviceSchema(service: Service) {
-  const lowest = Math.min(...service.prices.map((p) => p.price));
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -118,12 +117,7 @@ export function serviceSchema(service: Service) {
       "@type": "City",
       name: "Hyderabad",
     },
-    offers: {
-      "@type": "Offer",
-      priceCurrency: "INR",
-      price: lowest,
-      url: `${siteConfig.url}/services/${service.slug}`,
-    },
+    url: `${siteConfig.url}/services/${service.slug}`,
   };
 }
 

@@ -49,7 +49,7 @@ export function SignatureExperiences() {
             href="/pricing"
             className="inline-flex items-center gap-2 rounded-full border border-primary px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
-            View Full Price List
+            View All Treatments
             <ArrowRight className="size-4" strokeWidth={1.5} />
           </Link>
         </div>

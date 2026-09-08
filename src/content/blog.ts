@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
       "## Consider the Full Journey, Not Just the Massage",
       "The best spas in Gachibowli treat the visit as an experience, not a transaction. That means a welcome drink while your room is prepared, an unhurried consultation, a relaxation lounge to ease back into your day, and a closing cup of tea rather than being rushed straight to checkout. These details are why guests choose to return.",
       "## What to Ask Before You Book",
-      "A few quick questions reveal a lot: Is the therapist trained specifically in this modality? Is the room private? What's the cancellation policy? Is pricing transparent for every duration? At MY3 Wellness Spa in Gachibowli, our full price list for every treatment — 60, 90, and 120 minutes — is published openly on our Pricing page, with no hidden add-ons.",
+      "A few quick questions reveal a lot: Is the therapist trained specifically in this modality? Is the room private? What's the cancellation policy? Is pricing transparent for every duration? At MY3 Wellness Spa in Gachibowli, every treatment — 60, 90, and 120 minutes — comes with no hidden add-ons; call or message us on WhatsApp and we'll confirm the rate before you book.",
       "Whether you're closer to HITEC City, the Financial District, or Raidurg itself, a short drive to a genuinely private, well-run spa is worth far more than a slightly shorter commute to a generic one.",
     ],
   },

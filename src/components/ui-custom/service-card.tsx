@@ -6,7 +6,6 @@ import { ArrowUpRight, Gift } from "lucide-react";
 import { motion } from "framer-motion";
 
 import type { Service } from "@/content/services";
-import { startingPrice, strikeThroughPrice } from "@/content/services";
 import { ServiceIcon } from "@/components/ui-custom/service-icon";
 import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { WhatsAppIcon } from "@/components/ui-custom/brand-icons";
@@ -22,14 +21,12 @@ export function ServiceCard({
   service: Service;
   image: string;
   className?: string;
-  /** "detailed" (default) shows this service's real duration + struck-through
-   * / offer price — used on /services and the pricing-adjacent pages. "none"
-   * omits pricing entirely — used on the homepage grid, which is meant to
-   * hook interest rather than quote numbers (those live on /services and
-   * /pricing). */
+  /** "detailed" (default) shows this service's minimum duration — used on
+   * /services and related-treatment listings. "none" omits it too — used on
+   * the homepage grid, which is meant to hook interest rather than quote
+   * specifics. Neither mode shows a price; ask via Call/WhatsApp for rates. */
   priceDisplay?: "detailed" | "none";
 }) {
-  const price = startingPrice(service);
   const minDuration = Math.min(...service.prices.map((p) => p.duration));
 
   return (
@@ -83,16 +80,8 @@ export function ServiceCard({
             />
           </div>
           {priceDisplay === "detailed" && (
-            <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-              <span className="font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
-                From {minDuration} min
-              </span>
-              <span className="text-sm text-red-500 line-through decoration-red-500 decoration-2">
-                ₹{strikeThroughPrice(price).toLocaleString("en-IN")}
-              </span>
-              <span className="font-accent text-xl font-bold text-gold-deep">
-                ₹{price.toLocaleString("en-IN")}
-              </span>
+            <p className="mt-1.5 font-accent text-[11px] uppercase tracking-[0.12em] text-gold-deep">
+              From {minDuration} min
             </p>
           )}
         </div>
