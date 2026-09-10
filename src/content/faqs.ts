@@ -12,7 +12,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "What are your operating hours?",
     answer:
-      "We're open every day from 10:00 AM to 9:00 PM, with the last booking accepted at 8:00 PM. We recommend booking ahead for weekend and evening slots, which fill quickly.",
+      "We're open every day from 10:30 AM to 9:30 PM, with the last booking accepted at 8:30 PM. We recommend booking ahead for weekend and evening slots, which fill quickly.",
   },
   {
     question: "Do I need to book in advance?",

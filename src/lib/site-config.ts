@@ -50,9 +50,8 @@ export const siteConfig = {
     mapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.4237972,78.3798283",
   },
 
-  // Placeholder — confirm real hours with the client before launch.
-  hours: [{ days: "Monday — Sunday", time: "10:00 AM – 9:00 PM" }],
-  hoursNote: "Open all seven days · Last booking 8:00 PM",
+  hours: [{ days: "Monday — Sunday", time: "10:30 AM – 9:30 PM" }],
+  hoursNote: "Open all seven days · Last booking 8:30 PM",
 
   // Single source of truth for the current promo — change the number here and
   // it updates everywhere (offer bar, hero badge, service cards, popup).
