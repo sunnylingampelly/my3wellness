@@ -158,7 +158,12 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             ${hasRealAnalyticsId(siteConfig.googleAdsId) ? `gtag('config', '${siteConfig.googleAdsId}');` : ""}
-            ${hasRealAnalyticsId(siteConfig.ga4Id) ? `gtag('config', '${siteConfig.ga4Id}');` : ""}`}
+            ${hasRealAnalyticsId(siteConfig.ga4Id) ? `gtag('config', '${siteConfig.ga4Id}');` : ""}
+            ${
+              hasRealAnalyticsId(siteConfig.phoneConversionLabel)
+                ? `gtag('config', '${siteConfig.phoneConversionLabel}', { 'phone_conversion_number': '${siteConfig.phoneConversionNumber}' });`
+                : ""
+            }`}
           </Script>
         )}
       </head>

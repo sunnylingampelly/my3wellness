@@ -16,6 +16,14 @@ export const siteConfig = {
   gtmId: "GTM-N6JLKDG2",
   googleAdsId: "AW-18419941272",
   ga4Id: "G-VVRGHV21Q4",
+  // Google Ads dynamic number insertion (call conversion tracking with number
+  // swap): gtag.js's own script scans the page for phoneConversionNumber's
+  // exact text and swaps it for a Google forwarding number, so real phone
+  // calls (not just tel: link clicks) attribute back to this conversion
+  // label. Keep this in the same format Ads was given it in — the swap is a
+  // text match, not a phone-number parse.
+  phoneConversionLabel: "AW-18419941272/mjVdCMioj_QcEJj_p89E",
+  phoneConversionNumber: "+9199484 81838",
 
   contact: {
     phoneDisplay: "+91 99484 81838",
