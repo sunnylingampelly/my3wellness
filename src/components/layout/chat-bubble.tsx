@@ -111,7 +111,7 @@ export function ChatBubble() {
               Chat on WhatsApp
             </WhatsAppLink>
             <p className="mt-2 text-center text-[11px] text-muted-foreground">
-              No advance payment required
+              Details confirmed at booking
             </p>
           </motion.div>
         ) : (

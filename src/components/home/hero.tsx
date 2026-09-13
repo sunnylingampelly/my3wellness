@@ -235,7 +235,7 @@ export function Hero() {
             Claim a Free 20-Minute Extension
           </h2>
           <p className="mt-1 text-balance text-xs text-cream/70 sm:text-sm">
-            Book your massage, and we&apos;ll extend it by 20 minutes on the house — no obligation, no advance payment.
+            Book your massage, and we&apos;ll extend it by 20 minutes on the house — details confirmed at booking.
           </p>
         </motion.div>
 

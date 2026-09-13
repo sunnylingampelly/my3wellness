@@ -106,7 +106,7 @@ export function DiscountPopup() {
                 {siteConfig.cta.whatsapp}
               </WhatsAppLink>
             </div>
-            <p className="text-[11px] text-muted-foreground">No advance payment required</p>
+            <p className="text-[11px] text-muted-foreground">Details confirmed at booking</p>
           </div>
         </SheetContent>
       </Sheet>
@@ -166,7 +166,7 @@ export function DiscountPopup() {
               {siteConfig.cta.whatsapp}
             </WhatsAppLink>
           </div>
-          <p className="text-[11px] text-muted-foreground">No advance payment required</p>
+          <p className="text-[11px] text-muted-foreground">Details confirmed at booking</p>
         </div>
       </DialogContent>
     </Dialog>

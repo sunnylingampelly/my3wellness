@@ -70,7 +70,7 @@ export const siteConfig = {
     cardBadge: "Get 20% Off For First-Time Guests",
     popupHeadline: "Grab 20% Off Your First Visit",
     popupBody:
-      "Book your first treatment at MY3 Wellness Spa today and save 20% instantly — no advance payment required.",
+      "Book your first treatment at MY3 Wellness Spa today and save 20% instantly — details confirmed at booking.",
   },
 
   // Standard labels for the site's two primary CTAs, kept to just these two
