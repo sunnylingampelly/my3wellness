@@ -77,7 +77,12 @@ export const siteConfig = {
   // everywhere a call/WhatsApp button pair appears (hero, final CTA, discount
   // popup, sticky mobile bar) — call is the priority action, WhatsApp second.
   cta: {
-    call: "Book Free 30-Min Session",
+    // The 20-minute extension is an add-on to a guest's main (paid) session —
+    // it comes after, extending that session's length — never a standalone
+    // free booking on its own. Keep copy ordered "book your session, then
+    // the free extension" everywhere this appears, so it never reads as a
+    // separate free thing you could call in for by itself.
+    call: "Claim 20-Minute Extension",
     whatsapp: "Get 20% Off",
   },
 

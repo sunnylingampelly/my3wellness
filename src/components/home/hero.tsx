@@ -232,10 +232,10 @@ export function Hero() {
           className="mt-4 max-w-md sm:mt-6"
         >
           <h2 className="font-heading text-lg font-medium text-cream sm:text-xl">
-            {siteConfig.cta.call}
+            Claim a Free 20-Minute Extension
           </h2>
           <p className="mt-1 text-balance text-xs text-cream/70 sm:text-sm">
-            Reserve a complimentary 30-minute consultation and let our therapists design the right treatment for you — no obligation, no advance payment.
+            Book your massage, and we&apos;ll extend it by 20 minutes on the house — no obligation, no advance payment.
           </p>
         </motion.div>
 
