@@ -18,7 +18,7 @@ export function trackEvent(event: string, params?: Record<string, unknown>) {
   window.dataLayer.push({ event, ...params });
 }
 
-const CALL_CONVERSION_LABEL = "AW-18419941272/OflACMT9lvEcEJj_p89E";
+const CALL_CONVERSION_LABEL = "AW-18419941272/Dk8MCNaqvfgcEJj_p89E";
 
 /**
  * Google Ads "Click to call" conversion snippet, adapted to navigate the
@@ -69,7 +69,7 @@ export function reportCallConversion(url: string) {
   window.setTimeout(navigate, 400);
 }
 
-const WHATSAPP_CONVERSION_LABEL = "AW-18419941272/Tp06CIyfjfEcEJj_p89E";
+const WHATSAPP_CONVERSION_LABEL = "AW-18419941272/tf6ACLrVwfgcEJj_p89E";
 
 /**
  * Google Ads "WhatsApp booking" conversion snippet. No navigation

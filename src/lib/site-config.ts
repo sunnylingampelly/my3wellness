@@ -44,18 +44,13 @@ export const siteConfig = {
     // Exact real coordinates for the address above.
     lat: 17.4237972,
     lng: 78.3798283,
-    // Deliberately a plain lat/lng pin embed rather than a place-ID/business-name
-    // search — this building's Google Maps place ID is still registered under a
-    // previous, unrelated tenant's business name. A place/name-based embed would
-    // pull *their* live listing info (name, rating, reviews) into the card, not
-    // MY3's. A coordinate pin sidesteps that entirely: it marks the exact real
-    // spot without asserting whose listing lives there. The homepage/contact
-    // location cards render MY3's own name/hours/address from this file, not
-    // from Google — so nothing here can show the wrong business name. Swap this
-    // for a real "Share > Embed a map" link once MY3 has its own Google Business
-    // Profile claimed at this address.
-    mapsEmbedSrc: "https://maps.google.com/maps?q=17.4237972,78.3798283&z=17&output=embed",
-    mapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.4237972,78.3798283",
+    // MY3's Google Business Profile is now claimed at this address (place
+    // "MY3 Wellness Spa", https://maps.app.goo.gl/eFdBchFritrzjcfeA), so the
+    // embed/directions links can safely reference the business by name
+    // instead of a bare coordinate pin — see git history for the prior
+    // coordinate-only workaround and why it was needed before the claim.
+    mapsEmbedSrc: "https://maps.google.com/maps?q=MY3+Wellness+Spa,+Gachibowli,+Raidurg,+Hyderabad,+Telangana+500081&z=17&output=embed",
+    mapsDirectionsUrl: "https://maps.app.goo.gl/eFdBchFritrzjcfeA",
   },
 
   hours: [{ days: "Monday — Sunday", time: "10:30 AM – 9:30 PM" }],
