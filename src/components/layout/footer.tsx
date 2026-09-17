@@ -137,6 +137,17 @@ export function Footer() {
             &ldquo;{siteConfig.tagline}&rdquo;
           </p>
         </div>
+        <p className="mt-4 text-xs text-cream/70">
+          Site &amp; ads by{" "}
+          <a
+            href="https://vashynova.tech/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cream"
+          >
+            Sunny
+          </a>
+        </p>
       </div>
     </footer>
   );
