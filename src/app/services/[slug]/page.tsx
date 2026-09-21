@@ -45,13 +45,16 @@ export async function generateMetadata({
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
+  const title = service.metaTitle ?? `${service.name} in Gachibowli, Hyderabad`;
+  const description = service.metaDescription ?? service.description;
+
   return {
-    title: `${service.name} in Gachibowli, Hyderabad`,
-    description: service.description,
+    title,
+    description,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.name} | MY3 Wellness Spa`,
-      description: service.description,
+      title: `${title} | MY3 Wellness Spa`,
+      description,
     },
   };
 }

@@ -23,6 +23,10 @@ export type Service = {
   prices: PriceOption[];
   popular?: boolean;
   keywords: string[];
+  // Overrides the default `${name} in Gachibowli, Hyderabad` title/description
+  // template — used for services with their own paid-search landing page copy.
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
 export const services: Service[] = [
@@ -35,7 +39,10 @@ export const services: Service[] = [
     description:
       "Long, flowing strokes and gentle pressure ease muscular tension, quiet the nervous system, and restore a natural sense of ease — an elegant entry point into deep relaxation.",
     longDescription:
-      "Our Swedish massage is the foundation of restorative bodywork — a sequence of long gliding strokes, kneading, and gentle joint mobilisation performed with warmed aromatic oils. It is designed to lower stress hormones, improve circulation, and leave you in a state of unhurried calm. A favourite first experience for guests newer to spa therapy, and equally cherished as a weekly ritual by longtime visitors.",
+      "Searching for a Swedish massage near me? Our Swedish massage is the foundation of restorative bodywork — a sequence of long gliding strokes, kneading, and gentle joint mobilisation performed with warmed aromatic oils. It is designed to lower stress hormones, improve circulation, and leave you in a state of unhurried calm. A favourite first experience for guests newer to spa therapy, and equally cherished as a weekly ritual by longtime visitors.",
+    metaTitle: "Swedish Massage Near Me in Gachibowli, Hyderabad",
+    metaDescription:
+      "Looking for a Swedish massage near me in Gachibowli? MY3 Wellness Spa's Swedish massage uses long, flowing strokes to ease tension and restore calm — book by call or WhatsApp.",
     benefits: [
       "Eases everyday muscular tension",
       "Improves circulation and lymphatic flow",
@@ -59,7 +66,10 @@ export const services: Service[] = [
     description:
       "Slow, firm strokes work into deeper muscle layers to release chronic stiffness, knots, and postural strain — a purposeful therapy for bodies carrying real tension.",
     longDescription:
-      "Designed for guests who spend long hours at a desk or carry tension in the neck, shoulders, and lower back, our deep tissue massage applies focused, sustained pressure along muscle fibres and connective tissue. Therapists work with you to identify tight zones and calibrate pressure precisely, leaving the body looser, straighter, and noticeably lighter.",
+      "If you're searching for a deep tissue massage near me, MY3 Wellness Spa is right here in Gachibowli. Designed for guests who spend long hours at a desk or carry tension in the neck, shoulders, and lower back, our deep tissue massage applies focused, sustained pressure along muscle fibres and connective tissue. Therapists work with you to identify tight zones and calibrate pressure precisely, leaving the body looser, straighter, and noticeably lighter.",
+    metaTitle: "Deep Tissue Massage Near Me in Gachibowli, Hyderabad",
+    metaDescription:
+      "Deep tissue massage near me in Gachibowli — MY3 Wellness Spa's focused, sustained-pressure therapy releases chronic knots and desk-related back and neck strain.",
     benefits: [
       "Releases chronic muscle knots",
       "Improves posture and mobility",
@@ -106,7 +116,10 @@ export const services: Service[] = [
     description:
       "A dry therapy combining assisted yoga-like stretches, rhythmic acupressure, and energy-line work to restore flexibility, circulation, and vitality.",
     longDescription:
-      "Rooted in centuries-old healing tradition, Thai massage is performed without oils, using guided stretching and acupressure along the body's energy lines. Guests often describe it as part massage, part yoga — leaving with a marked increase in flexibility, better circulation, and a renewed sense of physical vitality.",
+      "One of the most requested Thai massage Gachibowli treatments on our menu. Rooted in centuries-old healing tradition, Thai massage is performed without oils, using guided stretching and acupressure along the body's energy lines. Guests often describe it as part massage, part yoga — leaving with a marked increase in flexibility, better circulation, and a renewed sense of physical vitality.",
+    metaTitle: "Thai Massage Near Me in Gachibowli, Hyderabad",
+    metaDescription:
+      "Thai massage Gachibowli — MY3 Wellness Spa's oil-free, stretch-and-acupressure therapy restores flexibility and vitality. Also searched as Thai massage near me.",
     benefits: [
       "Increases flexibility and range of motion",
       "Stimulates circulation and energy flow",
@@ -196,7 +209,10 @@ export const services: Service[] = [
     description:
       "Two people, two therapists, one tranquil suite — soothing therapies experienced side-by-side for a shared moment of stillness and connection.",
     longDescription:
-      "Our couple suite is designed for two guests to unwind together, each receiving individual attention from their own therapist in a shared, softly lit room. Popular with partners, close friends, and family, it turns wellness into a shared ritual rather than a solitary errand.",
+      "Searching for a couple spa near me? Our couple suite in Gachibowli is designed for two guests to unwind together, each receiving individual attention from their own therapist in a shared, softly lit room. Popular with partners, close friends, and family, it turns wellness into a shared ritual rather than a solitary errand.",
+    metaTitle: "Couples Massage Near Me in Gachibowli, Hyderabad",
+    metaDescription:
+      "Couple spa near me in Gachibowli — MY3 Wellness Spa's couples massage seats two guests with their own therapists in one private suite. A favourite couples massage Gachibowli experience.",
     benefits: [
       "Private suite for two",
       "Individual therapists for each guest",

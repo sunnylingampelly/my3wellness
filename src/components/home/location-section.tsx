@@ -13,7 +13,11 @@ export function LocationSection() {
   return (
     <section className="bg-background pt-12 pb-24 sm:py-32">
       <div className="container-luxe">
-        <SectionHeading eyebrow="Find Us" title="Our Location in Gachibowli" />
+        <SectionHeading
+          eyebrow="Find Us"
+          title="Our Location in Gachibowli"
+          description="A wellness spa in Gachibowli, easily reached from Raidurg, HITEC City, and the Financial District (Nanakramguda) — one of Hyderabad's most convenient spa near me options for the IT corridor."
+        />
 
         <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[380px_1fr]">
           <Reveal>
@@ -77,9 +81,9 @@ export function LocationSection() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
 
-              {/* Our own info card, styled like a native Maps place card — deliberately
-                  not relying on Google's live listing data, which still belongs to this
-                  address's previous tenant (see the mapsEmbedSrc comment in site-config.ts). */}
+              {/* Our own info card, styled like a native Maps place card, rendered from
+                  this file's own data rather than Google's embed — see the mapsEmbedSrc
+                  comment in site-config.ts. */}
               <div className="pointer-events-none absolute left-4 top-4 max-w-[280px] rounded-2xl bg-card/95 p-4 shadow-lg ring-1 ring-black/10 backdrop-blur-sm sm:max-w-xs">
                 <div className="flex items-start justify-between gap-2">
                   <span className="font-heading text-base font-semibold text-foreground">

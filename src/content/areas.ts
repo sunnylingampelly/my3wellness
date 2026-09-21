@@ -18,7 +18,7 @@ export const areas: Area[] = [
     shortDescription:
       "A luxury day spa a short drive from HITEC City, offering therapeutic massage built around long hours at a desk.",
     intro:
-      "If you work out of HITEC City, MY3 Wellness Spa is one of the closest genuine luxury spa experiences to you — usually under 15–20 minutes away by car, depending on traffic. Guests from HITEC City often arrive straight from work carrying tension in the neck, shoulders, and lower back from long hours at a screen. Our private, soundproofed suites and time-tested therapies are built specifically around that kind of everyday strain.",
+      "If you're looking for a spa near HITEC City or a massage near HITEC City, MY3 Wellness Spa is one of the closest genuine luxury spa experiences to you — usually under 15–20 minutes away by car, depending on traffic. Guests from HITEC City often arrive straight from work carrying tension in the neck, shoulders, and lower back from long hours at a screen. Our private, soundproofed suites and time-tested therapies are built specifically around that kind of everyday strain.",
     recommendedServices: ["thai-massage", "deep-tissue-massage", "foot-back-shoulder-massage"],
   },
   {
@@ -27,7 +27,7 @@ export const areas: Area[] = [
     shortDescription:
       "A private wellness sanctuary near the Financial District for professionals who need real recovery, not just a quick rubdown.",
     intro:
-      "Professionals from the Financial District make up a large share of our regular guests — most reach us in under 15–20 minutes by car, depending on traffic. After a demanding day of back-to-back meetings, our therapists focus on the areas that carry the most desk-related tension: shoulders, lower back, and feet. Every session opens with a short consultation, so pressure and pacing are calibrated to you, not a fixed routine.",
+      "Searching for a spa near Nanakramguda or a massage near Nanakramguda? Professionals from the Financial District (Nanakramguda) make up a large share of our regular guests — most reach us in under 15–20 minutes by car, depending on traffic. After a demanding day of back-to-back meetings, our therapists focus on the areas that carry the most desk-related tension: shoulders, lower back, and feet. Every session opens with a short consultation, so pressure and pacing are calibrated to you, not a fixed routine.",
     recommendedServices: ["foot-back-shoulder-massage", "deep-tissue-massage", "thai-deep-tissue-combination"],
   },
   {

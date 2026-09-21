@@ -36,10 +36,12 @@ export function AboutSplit() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-6 max-w-lg text-balance text-base sm:text-lg leading-relaxed text-muted-foreground">
-              Our sanctuary is designed to help busy professionals disconnect from
-              stress and reconnect with inner balance. Every therapy combines
-              time-tested technique with modern relaxation, in rooms built for
-              quiet — not for rushing.
+              If you&apos;ve been searching for a massage spa near me, MY3
+              Wellness Spa is a wellness center in Gachibowli, near Raidurg,
+              designed to help busy professionals disconnect from stress and
+              reconnect with inner balance. Every full body massage and body
+              massage combines time-tested technique with modern relaxation,
+              in rooms built for quiet — not for rushing.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
