@@ -153,11 +153,16 @@ export function Hero() {
       </div>
 
       <div className="container-luxe relative z-10 flex flex-1 flex-col items-center justify-center pt-[4.5rem] pb-[calc(1.25rem+env(safe-area-inset-bottom))] text-center sm:pt-24">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: -10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-        >
+        {/* This whole block (badge through CTA buttons) is the first thing a
+            visitor sees, most of them on mobile — it used to enter via
+            framer-motion (initial opacity:0, animated in on mount), which
+            means it stayed invisible in the raw server HTML until React
+            hydrated. On a throttled mobile connection that hydration can
+            take a second or more, so the page looked stuck on just the
+            background image. These now animate in with plain CSS
+            (animate-in, from tw-animate-css) so they paint immediately and
+            don't wait on JS at all. */}
+        <div className="animate-in fade-in-0 zoom-in-95 slide-in-from-top-1 duration-500 delay-75 ease-out">
           <WhatsAppLink
             message={`Hi MY3 Wellness Spa, I'd like to book a treatment with the ${siteConfig.promo.percent}% off offer.`}
             className="animate-offer-pulse inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1 font-accent text-[10px] font-semibold uppercase tracking-[0.08em] text-ink transition-transform hover:scale-[1.04] active:scale-95 sm:px-4 sm:py-1.5 sm:text-xs"
@@ -165,16 +170,11 @@ export function Hero() {
             <PartyPopper className="size-3 sm:size-3.5" strokeWidth={2} />
             {siteConfig.promo.headline}
           </WhatsAppLink>
-        </motion.div>
+        </div>
 
-        <motion.span
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-2.5 font-accent text-[10px] uppercase tracking-[0.24em] text-gold sm:mt-4 sm:text-sm sm:tracking-[0.32em]"
-        >
+        <span className="animate-in fade-in-0 slide-in-from-bottom-2 duration-700 delay-200 ease-out mt-2.5 font-accent text-[10px] uppercase tracking-[0.24em] text-gold sm:mt-4 sm:text-sm sm:tracking-[0.32em]">
           MY3 Wellness Spa &middot; Gachibowli, Hyderabad
-        </motion.span>
+        </span>
 
         <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-[1.15] text-cream sm:mt-5 sm:text-6xl sm:leading-[1.1] lg:text-7xl">
           {/* Visible headline is a short brand tagline by design — this prefix
@@ -182,14 +182,9 @@ export function Hero() {
               readers and crawlers without disrupting that design. */}
           <span className="sr-only">Best Spa Near Me in Gachibowli, Hyderabad — </span>
           {/* Mobile: fixed, short — no slideshow to sync with */}
-          <motion.span
-            initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="block text-balance sm:hidden"
-          >
+          <span className="animate-in fade-in-0 blur-in slide-in-from-bottom-3 duration-700 delay-300 ease-out block text-balance sm:hidden">
             Relax. Rejuvenate.
-          </motion.span>
+          </span>
 
           {/* Desktop/tablet: synced to the current slide */}
           <span className="hidden sm:block">
@@ -229,26 +224,16 @@ export function Hero() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.42 }}
-          className="mt-4 max-w-md sm:mt-6"
-        >
+        <div className="animate-in fade-in-0 slide-in-from-bottom-2 duration-700 delay-[420ms] ease-out mt-4 max-w-md sm:mt-6">
           <h2 className="font-heading text-lg font-medium text-cream sm:text-xl">
             Claim a Free 20-Minute Extension
           </h2>
           <p className="mt-1 text-balance text-xs text-cream/70 sm:text-sm">
             Book your massage, and we&apos;ll extend it by 20 minutes on the house — details confirmed at booking.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-4 flex w-full flex-col items-center gap-4 sm:mt-8 sm:w-auto sm:flex-row sm:gap-6"
-        >
+        <div className="animate-in fade-in-0 slide-in-from-bottom-2 duration-700 delay-500 ease-out mt-4 flex w-full flex-col items-center gap-4 sm:mt-8 sm:w-auto sm:flex-row sm:gap-6">
           {/* Call is the priority CTA — primary fill + the glow treatment. */}
           <CallLink className="btn-glow-border inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 font-accent text-xs uppercase tracking-[0.1em] text-ink shadow-lg shadow-gold/30 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
             <Phone className="size-4" strokeWidth={1.75} />
@@ -258,7 +243,7 @@ export function Hero() {
             <WhatsAppIcon className="size-4" />
             {siteConfig.cta.whatsapp}
           </WhatsAppLink>
-        </motion.div>
+        </div>
 
         <div className="mt-5 hidden items-center gap-2 sm:mt-6 sm:flex">
           {SLIDES.map((s, i) => (
