@@ -66,9 +66,13 @@ export function MobileCtaBar() {
             >
               <WhatsAppIcon className="size-5" />
             </WhatsAppLink>
-            <CallLink className="btn-glow-border flex flex-1 items-center justify-center gap-1.5 rounded-full bg-gold py-3 font-accent text-[11px] font-semibold uppercase leading-[1.15] tracking-[0.02em] text-ink shadow-[0_4px_14px_rgba(199,169,107,0.4)] transition-transform active:scale-95">
+            <CallLink className="btn-glow-border flex flex-1 items-center justify-center gap-1.5 rounded-full bg-gold py-3 font-accent text-[11px] font-semibold leading-[1.15] text-ink shadow-[0_4px_14px_rgba(199,169,107,0.4)] transition-transform active:scale-95">
               <Phone className="size-4 shrink-0" strokeWidth={1.75} />
-              <span className="text-center">{siteConfig.cta.call}</span>
+              {/* The direct number, in the plain UI font (not the stylised
+                  accent face) so it reads clearly at a glance. */}
+              <span className="text-center font-sans normal-case tracking-normal tabular-nums">
+                {siteConfig.contact.phoneDisplay}
+              </span>
             </CallLink>
           </div>
         </motion.div>

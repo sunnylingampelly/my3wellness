@@ -236,8 +236,14 @@ export function Hero() {
         <div className="animate-in fade-in-0 slide-in-from-bottom-2 duration-700 delay-500 ease-out mt-4 flex w-full flex-col items-center gap-4 sm:mt-8 sm:w-auto sm:flex-row sm:gap-6">
           {/* Call is the priority CTA — primary fill + the glow treatment. */}
           <CallLink className="btn-glow-border inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 font-accent text-xs uppercase tracking-[0.1em] text-ink shadow-lg shadow-gold/30 transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
-            <Phone className="size-4" strokeWidth={1.75} />
-            {siteConfig.cta.call}
+            <Phone className="size-4 shrink-0" strokeWidth={1.75} />
+            {/* Mobile: the actual number, in the plain UI font (not the
+                stylised accent face) so it reads clearly at a glance.
+                Desktop keeps the promo copy. */}
+            <span className="font-sans text-sm normal-case tracking-normal tabular-nums sm:hidden">
+              {siteConfig.contact.phoneDisplay}
+            </span>
+            <span className="hidden sm:inline">{siteConfig.cta.call}</span>
           </CallLink>
           <WhatsAppLink className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full border border-cream/40 px-7 py-3 font-accent text-xs uppercase tracking-[0.14em] text-cream transition-colors hover:border-cream hover:bg-cream/10 sm:w-auto sm:max-w-none sm:py-3.5 sm:text-sm">
             <WhatsAppIcon className="size-4" />
