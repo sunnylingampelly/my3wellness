@@ -107,6 +107,11 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  // Proves domain ownership to Google Search Console — this is separate from
+  // GA4 (siteConfig.ga4Id above), which is what actually tracks page views.
+  verification: {
+    google: "TkYh7G2CutDWD77MR5o9nMyqFH085kJlQSpm7wALLgc",
+  },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
