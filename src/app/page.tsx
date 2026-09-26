@@ -15,16 +15,15 @@ import { FinalCta } from "@/components/home/final-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqPageSchema } from "@/lib/schema";
 import { generalFaqs } from "@/content/faqs";
-import { siteConfig } from "@/lib/site-config";
 
 const homeDescription =
-  "Looking for the best spa near me? MY3 Wellness Spa is a luxury day spa in Gachibowli, Raidurg offering full body massage, body massage, Swedish, Thai, Balinese and deep-tissue therapy for Hyderabad's IT corridor — open daily, walk-ins welcome.";
+  "MY3 Wellness Spa is a private day spa in Gachibowli, Raidurg, offering Swedish, Thai, Balinese and deep-tissue massage in a quiet, professionally run setting. Open daily, 10:30 AM–9:30 PM — book by call or WhatsApp.";
 
 export const metadata: Metadata = {
   // Written out in full (rather than relying on the root layout's title
   // template) because this exact page's title has never picked up that
   // template's " | MY3 Wellness Spa" suffix — true even before this change.
-  title: "Best Spa Near Me in Gachibowli, Hyderabad | MY3 Wellness Spa",
+  title: "Spa & Massage in Gachibowli, Hyderabad | MY3 Wellness Spa",
   description: homeDescription,
   alternates: { canonical: "/" },
   openGraph: { description: homeDescription },

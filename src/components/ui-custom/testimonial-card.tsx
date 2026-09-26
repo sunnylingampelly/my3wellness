@@ -1,6 +1,5 @@
 import { Star } from "lucide-react";
 import type { Testimonial } from "@/content/testimonials";
-import { GoogleIcon } from "@/components/ui-custom/brand-icons";
 import { cn } from "@/lib/utils";
 
 // Google's default avatar palette for reviewers without a profile photo —
@@ -38,32 +37,22 @@ export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           {initial}
         </span>
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5">
-            <span className="truncate font-accent text-sm font-medium text-foreground">
-              {testimonial.name}
-            </span>
-            <GoogleIcon className="size-3.5 shrink-0" />
-          </div>
-          <div className="mt-0.5 flex items-center gap-1.5">
-            <div className="flex items-center gap-0.5" aria-hidden="true">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star
-                  key={i}
-                  className={cn(
-                    "size-3.5",
-                    i < testimonial.rating
-                      ? "fill-[#FBBC04] text-[#FBBC04]"
-                      : "fill-none text-border"
-                  )}
-                  strokeWidth={1.5}
-                />
-              ))}
-            </div>
-            <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
-          </div>
-          <span className="sr-only">
-            {testimonial.rating} out of 5 stars, reviewed on Google {testimonial.timeAgo}
+          <span className="truncate font-accent text-sm font-medium text-foreground">
+            {testimonial.name}
           </span>
+          <div className="mt-0.5 flex items-center gap-0.5" aria-hidden="true">
+            {Array.from({ length: 5 }, (_, i) => (
+              <Star
+                key={i}
+                className={cn(
+                  "size-3.5",
+                  i < testimonial.rating ? "fill-gold text-gold" : "fill-none text-border"
+                )}
+                strokeWidth={1.5}
+              />
+            ))}
+          </div>
+          <span className="sr-only">{testimonial.rating} out of 5 stars</span>
         </div>
       </div>
 

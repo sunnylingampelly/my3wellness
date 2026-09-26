@@ -57,7 +57,7 @@ export const generalFaqs: FAQ[] = [
   {
     question: "How do I get to MY3 Wellness Spa from HITEC City or the Financial District?",
     answer:
-      "We're a short drive from both business districts — most guests from HITEC City, Financial District, or Wipro Circle reach us in under 15–20 minutes depending on traffic. Use the map on our Contact page for live directions.",
+      "We're a short drive from both business districts, in Gachibowli. Use the map on our Contact page for live directions.",
   },
   {
     question: "Can I request a specific therapist or gender preference?",

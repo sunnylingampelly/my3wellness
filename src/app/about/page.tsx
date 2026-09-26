@@ -10,7 +10,6 @@ import { FeatureCard } from "@/components/ui-custom/feature-card";
 import { StatCounter } from "@/components/ui-custom/stat-counter";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema } from "@/lib/schema";
-import { siteConfig } from "@/lib/site-config";
 import { services } from "@/content/services";
 
 export const metadata: Metadata = {
@@ -136,8 +135,7 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-olive py-20 sm:py-24">
-        <div className="container-luxe grid grid-cols-2 gap-8 sm:grid-cols-4">
-          <StatCounter tone="dark" value={siteConfig.yearsOfExperience} suffix="+" label="Years of Care" />
+        <div className="container-luxe grid grid-cols-3 gap-8">
           <StatCounter tone="dark" value={services.length} suffix="+" label="Curated Therapies" />
           <StatCounter tone="dark" value={7} label="Days a Week Open" />
           <StatCounter tone="dark" value={100} suffix="%" label="Private Suites" />

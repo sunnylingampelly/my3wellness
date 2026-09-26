@@ -27,6 +27,13 @@ export type Service = {
   // template — used for services with their own paid-search landing page copy.
   metaTitle?: string;
   metaDescription?: string;
+  // Extra structured detail rendered on the service's own page — optional
+  // because only a few services have been written up this thoroughly so far;
+  // the rest fall back to just description/longDescription/benefits.
+  sessionFlow?: string;
+  pressureStyle?: string;
+  whoItsFor?: string[];
+  beforeYouVisit?: string[];
 };
 
 export const services: Service[] = [
@@ -39,10 +46,24 @@ export const services: Service[] = [
     description:
       "Long, flowing strokes and gentle pressure ease muscular tension, quiet the nervous system, and restore a natural sense of ease — an elegant entry point into deep relaxation.",
     longDescription:
-      "Searching for a Swedish massage near me? Our Swedish massage is the foundation of restorative bodywork — a sequence of long gliding strokes, kneading, and gentle joint mobilisation performed with warmed aromatic oils. It is designed to lower stress hormones, improve circulation, and leave you in a state of unhurried calm. A favourite first experience for guests newer to spa therapy, and equally cherished as a weekly ritual by longtime visitors.",
-    metaTitle: "Swedish Massage Near Me in Gachibowli, Hyderabad",
+      "Our Swedish massage is the foundation of restorative bodywork — a sequence of long gliding strokes, kneading, and gentle joint mobilisation performed with warmed aromatic oils. It is designed to lower stress hormones, improve circulation, and leave you in a state of unhurried calm. A favourite first experience for guests newer to spa therapy, and equally cherished as a weekly ritual by longtime visitors.",
+    metaTitle: "Swedish Massage in Gachibowli, Hyderabad",
     metaDescription:
-      "Looking for a Swedish massage near me in Gachibowli? MY3 Wellness Spa's Swedish massage uses long, flowing strokes to ease tension and restore calm — book by call or WhatsApp.",
+      "Swedish massage at MY3 Wellness Spa, Gachibowli — long, flowing strokes with warmed aromatic oils to ease tension and restore calm. Call or WhatsApp to book.",
+    sessionFlow:
+      "Your session opens with a short consultation so your therapist understands what you need from it. From there it's long, flowing strokes, kneading, and gentle joint mobilisation with warmed aromatic oils, moving at an unhurried pace from one muscle group to the next.",
+    pressureStyle:
+      "Light to medium pressure by design — Swedish technique is built around long, continuous strokes rather than deep, targeted work. If you want firmer, more focused pressure on specific tight spots, our Deep Tissue Massage is the better fit.",
+    whoItsFor: [
+      "First-time spa guests who want a gentle introduction",
+      "Anyone whose main goal is relaxation and circulation, not deep muscle work",
+      "Guests who prefer a weekly or fortnightly reset ritual",
+    ],
+    beforeYouVisit: [
+      "Arrive 10–15 minutes early for a welcome drink and a short consultation",
+      "Avoid a heavy meal right before your session",
+      "Walk-ins are welcome subject to availability, but advance booking is recommended for weekend and evening slots",
+    ],
     benefits: [
       "Eases everyday muscular tension",
       "Improves circulation and lymphatic flow",
@@ -66,10 +87,24 @@ export const services: Service[] = [
     description:
       "Slow, firm strokes work into deeper muscle layers to release chronic stiffness, knots, and postural strain — a purposeful therapy for bodies carrying real tension.",
     longDescription:
-      "If you're searching for a deep tissue massage near me, MY3 Wellness Spa is right here in Gachibowli. Designed for guests who spend long hours at a desk or carry tension in the neck, shoulders, and lower back, our deep tissue massage applies focused, sustained pressure along muscle fibres and connective tissue. Therapists work with you to identify tight zones and calibrate pressure precisely, leaving the body looser, straighter, and noticeably lighter.",
-    metaTitle: "Deep Tissue Massage Near Me in Gachibowli, Hyderabad",
+      "Designed for guests who spend long hours at a desk or carry tension in the neck, shoulders, and lower back, our deep tissue massage applies focused, sustained pressure along muscle fibres and connective tissue. Therapists work with you to identify tight zones and calibrate pressure precisely, leaving the body looser, straighter, and noticeably lighter.",
+    metaTitle: "Deep Tissue Massage in Gachibowli, Hyderabad",
     metaDescription:
-      "Deep tissue massage near me in Gachibowli — MY3 Wellness Spa's focused, sustained-pressure therapy releases chronic knots and desk-related back and neck strain.",
+      "Deep tissue massage at MY3 Wellness Spa, Gachibowli — focused, sustained pressure to release chronic knots and desk-related back and neck strain. Call or WhatsApp to book.",
+    sessionFlow:
+      "After a short consultation to flag any problem areas, your therapist works slow, firm strokes into deeper muscle layers and connective tissue, spending more time on the zones carrying the most tension rather than moving through a fixed routine.",
+    pressureStyle:
+      "Firm, sustained pressure focused on specific tight areas — noticeably deeper than a Swedish massage. Therapists calibrate pressure to what you can comfortably tolerate, so tell them at the start (or at any point) if it needs adjusting.",
+    whoItsFor: [
+      "Guests who spend long hours at a desk and carry tension in the neck, shoulders, or lower back",
+      "Anyone with chronic muscle knots or postural strain rather than general relaxation needs",
+      "Guests who've had a Swedish massage before and want something more targeted",
+    ],
+    beforeYouVisit: [
+      "Arrive 10–15 minutes early for a welcome drink and a short consultation",
+      "Tell your therapist about any problem areas or injuries before the session starts",
+      "Advance booking is recommended, especially for weekend and evening slots",
+    ],
     benefits: [
       "Releases chronic muscle knots",
       "Improves posture and mobility",
@@ -209,10 +244,24 @@ export const services: Service[] = [
     description:
       "Two people, two therapists, one tranquil suite — soothing therapies experienced side-by-side for a shared moment of stillness and connection.",
     longDescription:
-      "Searching for a couple spa near me? Our couple suite in Gachibowli is designed for two guests to unwind together, each receiving individual attention from their own therapist in a shared, softly lit room. Popular with partners, close friends, and family, it turns wellness into a shared ritual rather than a solitary errand.",
-    metaTitle: "Couples Massage Near Me in Gachibowli, Hyderabad",
+      "Our couple suite in Gachibowli is designed for two guests to unwind together, each receiving individual attention from their own therapist in a shared, softly lit room. Popular with partners, close friends, and family, it turns wellness into a shared ritual rather than a solitary errand.",
+    metaTitle: "Couples Massage in Gachibowli, Hyderabad",
     metaDescription:
-      "Couple spa near me in Gachibowli — MY3 Wellness Spa's couples massage seats two guests with their own therapists in one private suite. A favourite couples massage Gachibowli experience.",
+      "Couples massage at MY3 Wellness Spa, Gachibowli — a private suite for two guests, each with their own therapist. Ideal for anniversaries and celebrations. Call or WhatsApp to book.",
+    sessionFlow:
+      "You and your guest are shown into a shared, softly lit suite together, each with your own therapist working alongside the other. You each choose your own treatment beforehand — Swedish, Deep Tissue, or another signature therapy — so the two sessions can suit two different people with two different needs.",
+    pressureStyle:
+      "Set by whichever treatment each guest chooses — see the Swedish Massage or Deep Tissue Massage pages for what each involves — since the suite pairs two individual sessions happening side by side, not a single shared technique.",
+    whoItsFor: [
+      "Partners, close friends, or family wanting a shared wellness experience",
+      "Anniversaries, birthdays, and other occasions worth marking together",
+      "Anyone who'd rather not go alone but still wants their own therapist and pressure preference",
+    ],
+    beforeYouVisit: [
+      "Booking ahead is strongly recommended for the couples suite, especially on weekends",
+      "Let us know each guest's treatment preference when you book so both therapists are ready",
+      "Arrive 10–15 minutes early together for a welcome drink and a short consultation",
+    ],
     benefits: [
       "Private suite for two",
       "Individual therapists for each guest",

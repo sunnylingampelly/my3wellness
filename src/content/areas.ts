@@ -18,7 +18,7 @@ export const areas: Area[] = [
     shortDescription:
       "A luxury day spa a short drive from HITEC City, offering therapeutic massage built around long hours at a desk.",
     intro:
-      "If you're looking for a spa near HITEC City or a massage near HITEC City, MY3 Wellness Spa is one of the closest genuine luxury spa experiences to you — usually under 15–20 minutes away by car, depending on traffic. Guests from HITEC City often arrive straight from work carrying tension in the neck, shoulders, and lower back from long hours at a screen. Our private, soundproofed suites and time-tested therapies are built specifically around that kind of everyday strain.",
+      "If you're looking for a spa near HITEC City or a massage near HITEC City, MY3 Wellness Spa is a short drive away in Gachibowli. Our private, soundproofed suites and time-tested therapies are built around the kind of everyday strain that comes from long hours at a desk or a screen — neck, shoulders, and lower back.",
     recommendedServices: ["thai-massage", "deep-tissue-massage", "foot-back-shoulder-massage"],
   },
   {
@@ -27,7 +27,7 @@ export const areas: Area[] = [
     shortDescription:
       "A private wellness sanctuary near the Financial District for professionals who need real recovery, not just a quick rubdown.",
     intro:
-      "Searching for a spa near Nanakramguda or a massage near Nanakramguda? Professionals from the Financial District (Nanakramguda) make up a large share of our regular guests — most reach us in under 15–20 minutes by car, depending on traffic. After a demanding day of back-to-back meetings, our therapists focus on the areas that carry the most desk-related tension: shoulders, lower back, and feet. Every session opens with a short consultation, so pressure and pacing are calibrated to you, not a fixed routine.",
+      "Searching for a spa near Nanakramguda or a massage near Nanakramguda? MY3 Wellness Spa is a short drive from the Financial District, in Gachibowli. After a demanding day of back-to-back meetings, our therapists focus on the areas that carry the most desk-related tension — shoulders, lower back, and feet. Every session opens with a short consultation, so pressure and pacing are calibrated to you, not a fixed routine.",
     recommendedServices: ["foot-back-shoulder-massage", "deep-tissue-massage", "thai-deep-tissue-combination"],
   },
   {
@@ -36,7 +36,7 @@ export const areas: Area[] = [
     shortDescription:
       "A five-star day spa minutes from Wipro Circle, built for busy professionals who need to properly switch off.",
     intro:
-      "Wipro Circle sits right in Gachibowli, making MY3 Wellness Spa one of the most convenient genuine luxury spa options nearby — no long detour required after work. Guests from Wipro Circle typically book in for an hour or ninety minutes to fully disconnect between the office and home, in a private suite designed for quiet rather than rushing.",
+      "Wipro Circle sits right in Gachibowli, so MY3 Wellness Spa is close by without a long detour after work. Choose a 60 or 90-minute session to disconnect between the office and home, in a private suite designed for quiet rather than rushing.",
     recommendedServices: ["deep-tissue-massage", "swedish-massage", "thai-deep-tissue-combination"],
   },
   {
@@ -45,7 +45,7 @@ export const areas: Area[] = [
     shortDescription:
       "MY3 Wellness Spa is a short walk or ride from Raidurg Metro Station — an easy stop on the way home.",
     intro:
-      "For guests commuting via the Metro, MY3 Wellness Spa is easily reached from Raidurg Metro Station — a convenient stop before heading home rather than a special trip. It's a favourite among Metro commuters looking to unwind after a long day without adding much to the journey.",
+      "MY3 Wellness Spa is easily reached from Raidurg Metro Station — a stop on the way home rather than a special trip, if you'd like to unwind after a long day before heading back.",
     recommendedServices: ["swedish-massage", "thai-foot-reflexology", "foot-head-shoulder-massage"],
   },
   {
@@ -54,7 +54,7 @@ export const areas: Area[] = [
     shortDescription:
       "A private spa sanctuary a short drive from Mindspace, Madhapur — five-star therapy without the five-star hotel prices.",
     intro:
-      "Guests working out of Mindspace regularly choose MY3 Wellness Spa as their go-to reset, usually reaching us in under 15–20 minutes by car depending on traffic. We combine hotel-spa-level privacy and hygiene standards with accessible pricing, so proper recovery doesn't have to wait for a special occasion.",
+      "MY3 Wellness Spa is a short drive from Mindspace, Madhapur. We combine hotel-spa-level privacy and hygiene standards with accessible pricing, so proper recovery doesn't have to wait for a special occasion.",
     recommendedServices: ["balinese-massage", "deep-tissue-massage", "couples-massage"],
   },
   {
@@ -70,4 +70,11 @@ export const areas: Area[] = [
 
 export function getAreaBySlug(slug: string) {
   return areas.find((a) => a.slug === slug);
+}
+
+// Areas that list this service in their own recommendedServices — used to
+// link a service's own page back to the location page(s) most relevant to
+// it, rather than guessing at a "closest" area.
+export function getAreasRecommending(serviceSlug: string) {
+  return areas.filter((a) => a.recommendedServices.includes(serviceSlug));
 }

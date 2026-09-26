@@ -19,7 +19,11 @@ export function StatCounter({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [display, setDisplay] = useState(0);
+  // Starts at the real value (not 0) so the server-rendered HTML — and
+  // anyone whose JS hasn't hydrated yet — always shows the correct number.
+  // The count-up-from-zero effect below is a progressive enhancement once
+  // in view, not the source of truth for what's initially on the page.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;

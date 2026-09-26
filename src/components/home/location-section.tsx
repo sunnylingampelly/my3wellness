@@ -16,7 +16,7 @@ export function LocationSection() {
         <SectionHeading
           eyebrow="Find Us"
           title="Our Location in Gachibowli"
-          description="A wellness spa in Gachibowli, easily reached from Raidurg, HITEC City, and the Financial District (Nanakramguda) — one of Hyderabad's most convenient spa near me options for the IT corridor."
+          description="A wellness spa in Gachibowli, easily reached from Raidurg, HITEC City, and the Financial District (Nanakramguda)."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[380px_1fr]">

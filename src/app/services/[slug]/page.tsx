@@ -13,6 +13,7 @@ import { WhatsAppLink } from "@/components/ui-custom/whatsapp-link";
 import { JsonLd } from "@/components/seo/json-ld";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { services, getServiceBySlug } from "@/content/services";
+import { getAreasRecommending } from "@/content/areas";
 
 const IMAGES = [
   "/images/gallery/gallery-01.png",
@@ -71,6 +72,9 @@ export default async function ServiceDetailPage({
   const related = services
     .filter((s) => s.slug !== service.slug && s.category === service.category)
     .slice(0, 3);
+  const recommendingAreas = getAreasRecommending(service.slug).slice(0, 2);
+  const hasDetailSections =
+    service.sessionFlow || service.pressureStyle || service.whoItsFor || service.beforeYouVisit;
 
   return (
     <>
@@ -159,6 +163,100 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
+
+      {hasDetailSections && (
+        <section className="bg-secondary/40 py-24 sm:py-28">
+          <div className="container-luxe max-w-3xl">
+            {service.sessionFlow && (
+              <>
+                <Reveal>
+                  <h2 className="font-heading text-2xl text-foreground">What Happens in the Session</h2>
+                </Reveal>
+                <Reveal delay={0.06}>
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                    {service.sessionFlow}
+                  </p>
+                </Reveal>
+              </>
+            )}
+
+            {service.pressureStyle && (
+              <>
+                <Reveal delay={0.1}>
+                  <h2 className="mt-10 font-heading text-2xl text-foreground">Pressure &amp; Style</h2>
+                </Reveal>
+                <Reveal delay={0.14}>
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                    {service.pressureStyle}
+                  </p>
+                </Reveal>
+              </>
+            )}
+
+            {service.whoItsFor && service.whoItsFor.length > 0 && (
+              <>
+                <Reveal delay={0.18}>
+                  <h2 className="mt-10 font-heading text-2xl text-foreground">Who It&rsquo;s For</h2>
+                </Reveal>
+                <Reveal delay={0.22}>
+                  <ul className="mt-4 flex flex-col gap-2.5">
+                    {service.whoItsFor.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-base text-foreground/85">
+                        <Check className="mt-1 size-4 shrink-0 text-primary" strokeWidth={1.75} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </>
+            )}
+
+            {service.beforeYouVisit && service.beforeYouVisit.length > 0 && (
+              <>
+                <Reveal delay={0.26}>
+                  <h2 className="mt-10 font-heading text-2xl text-foreground">Before You Visit</h2>
+                </Reveal>
+                <Reveal delay={0.3}>
+                  <ul className="mt-4 flex flex-col gap-2.5">
+                    {service.beforeYouVisit.map((item) => (
+                      <li key={item} className="flex items-start gap-2.5 text-base text-foreground/85">
+                        <Check className="mt-1 size-4 shrink-0 text-primary" strokeWidth={1.75} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </>
+            )}
+
+            <Reveal delay={0.34}>
+              <div className="mt-12 flex flex-wrap gap-3 border-t border-border pt-8">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-2.5 font-accent text-xs uppercase tracking-[0.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  Session Lengths &amp; Rates
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-2.5 font-accent text-xs uppercase tracking-[0.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                >
+                  Contact &amp; Directions
+                </Link>
+                {recommendingAreas.map((area) => (
+                  <Link
+                    key={area.slug}
+                    href={`/spa-near/${area.slug}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-primary px-5 py-2.5 font-accent text-xs uppercase tracking-[0.12em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                  >
+                    Coming From {area.name}?
+                  </Link>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="bg-secondary/40 py-24 sm:py-28">

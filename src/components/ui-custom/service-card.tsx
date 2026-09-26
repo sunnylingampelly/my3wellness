@@ -48,7 +48,7 @@ export function ServiceCard({
         >
           <Image
             src={image}
-            alt=""
+            alt={`${service.name} treatment at MY3 Wellness Spa, Gachibowli`}
             fill
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
             className="object-cover"

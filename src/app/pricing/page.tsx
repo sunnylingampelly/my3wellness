@@ -11,9 +11,9 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { signatureServices, combinationServices } from "@/content/services";
 
 export const metadata: Metadata = {
-  title: "Massage Pricing in Gachibowli, Hyderabad",
+  title: "Treatments & Session Lengths in Gachibowli, Hyderabad",
   description:
-    "Transparent pricing for every treatment at MY3 Wellness Spa, Gachibowli — Swedish, Thai, Balinese, Deep Tissue, and combination therapies, from 60 to 120 minutes.",
+    "Every treatment at MY3 Wellness Spa, Gachibowli — Swedish, Thai, Balinese, Deep Tissue, and combination therapies, in 60, 90, and 120-minute sessions. Call or WhatsApp for current rates.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -27,9 +27,9 @@ export default function PricingPage() {
         ])}
       />
       <PageHero
-        eyebrow="Transparent Pricing"
+        eyebrow="Treatments & Session Lengths"
         title="Every Treatment, Every Duration"
-        description="No hidden add-ons, no vague estimates. Choose your duration, choose your therapy — call or message us and we'll confirm today's rate."
+        description="Choose your duration and therapy below, then call or message us on WhatsApp and we'll confirm the current rate before you book."
         image="/images/gallery/gallery-05.png"
         breadcrumb={[{ name: "Home", href: "/" }, { name: "Pricing" }]}
       />

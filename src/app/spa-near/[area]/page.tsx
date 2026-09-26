@@ -140,7 +140,7 @@ export default async function AreaLandingPage({
           <div className="order-2 lg:order-1 lg:col-span-2">
             <Reveal>
               <span className="font-accent text-xs sm:text-sm uppercase tracking-[0.28em] text-gold-deep">
-                Why {area.name} Chooses MY3
+                MY3 Wellness Spa &amp; {area.name}
               </span>
             </Reveal>
             <Reveal delay={0.06}>

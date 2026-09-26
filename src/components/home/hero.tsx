@@ -178,9 +178,9 @@ export function Hero() {
 
         <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-[1.15] text-cream sm:mt-5 sm:text-6xl sm:leading-[1.1] lg:text-7xl">
           {/* Visible headline is a short brand tagline by design — this prefix
-              carries the same "best spa near me" search intent for screen
-              readers and crawlers without disrupting that design. */}
-          <span className="sr-only">Best Spa Near Me in Gachibowli, Hyderabad — </span>
+              gives screen readers and crawlers the plain, descriptive version
+              without disrupting that design. */}
+          <span className="sr-only">Spa and Massage in Gachibowli, Hyderabad — </span>
           {/* Mobile: fixed, short — no slideshow to sync with */}
           <span className="animate-in fade-in-0 blur-in slide-in-from-bottom-3 duration-700 delay-300 ease-out block text-balance sm:hidden">
             Relax. Rejuvenate.

@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 
 import { Reveal } from "@/components/ui-custom/reveal";
 import { StatCounter } from "@/components/ui-custom/stat-counter";
-import { siteConfig } from "@/lib/site-config";
 import { services } from "@/content/services";
 
 export function AboutSplit() {
@@ -36,12 +35,11 @@ export function AboutSplit() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-6 max-w-lg text-balance text-base sm:text-lg leading-relaxed text-muted-foreground">
-              If you&apos;ve been searching for a massage spa near me, MY3
-              Wellness Spa is a wellness center in Gachibowli, near Raidurg,
-              designed to help busy professionals disconnect from stress and
-              reconnect with inner balance. Every full body massage and body
-              massage combines time-tested technique with modern relaxation,
-              in rooms built for quiet — not for rushing.
+              MY3 Wellness Spa is a wellness sanctuary in Gachibowli, near
+              Raidurg, designed to help busy professionals disconnect from
+              stress and reconnect with inner balance. Every massage combines
+              time-tested technique with modern relaxation, in rooms built
+              for quiet — not for rushing.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
@@ -56,8 +54,8 @@ export function AboutSplit() {
 
           <Reveal delay={0.32}>
             <div className="mt-12 grid grid-cols-2 gap-4 border-t border-border pt-8">
-              <StatCounter value={siteConfig.yearsOfExperience} suffix="+" label="Years of Care" />
               <StatCounter value={services.length} suffix="+" label="Curated Therapies" />
+              <StatCounter value={7} label="Days a Week Open" />
             </div>
           </Reveal>
         </div>
